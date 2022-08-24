@@ -659,7 +659,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974584396}
+      - m_Target: {fileID: 725433588}
         m_MethodName: ButtonB
         m_Mode: 1
         m_Arguments:
@@ -940,7 +940,94 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &725433586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725433589}
+  - component: {fileID: 725433588}
+  - component: {fileID: 725433587}
+  m_Layer: 0
+  m_Name: ScenarioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &725433587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725433586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614dccd28dc929e43969441caf7a464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 684863924}
+  talkText: {fileID: 297207608}
+  triangle: {fileID: 883382654}
+  textSpeed: 0.05
+--- !u!114 &725433588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725433586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb62398f91694d4c86bcb907c825301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textFail: {fileID: 4900000, guid: 29f464c788d34864a947e9c00a002188, type: 3}
+  _uitext: {fileID: 725433587}
+  _branch:
+  - {fileID: 861371275}
+  - {fileID: 1717378767}
+  - {fileID: 598888185}
+  _character:
+  - {fileID: 1650160937}
+  - {fileID: 180220259}
+  - {fileID: 997688936}
+  - {fileID: 1674837506}
+  _backGraund:
+  - {fileID: 985541662}
+  - {fileID: 2074376269}
+  - {fileID: 260313031}
+  - {fileID: 2099951402}
+  - {fileID: 574056506}
+  - {fileID: 1298769140}
+  - {fileID: 1103124417}
+  - {fileID: 1543689531}
+  - {fileID: 1662775133}
+  - {fileID: 736588950}
+  _eventText: {fileID: 181425693}
+  _button:
+  - {fileID: 1700933814}
+  - {fileID: 603773623}
+  - {fileID: 1501637667}
+--- !u!4 &725433589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725433586}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 198.2005, y: 34.286774, z: -45.2659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &736588948
 GameObject:
@@ -1747,7 +1834,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974584396}
+      - m_Target: {fileID: 725433588}
         m_MethodName: ButtonC
         m_Mode: 1
         m_Arguments:
@@ -2258,7 +2345,7 @@ RectTransform:
   - {fileID: 1974584394}
   - {fileID: 181425692}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2347,7 +2434,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974584396}
+      - m_Target: {fileID: 725433588}
         m_MethodName: ButtonA
         m_Mode: 1
         m_Arguments:
@@ -2482,8 +2569,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974584394}
-  - component: {fileID: 1974584396}
-  - component: {fileID: 1974584395}
   m_Layer: 5
   m_Name: TalkManager
   m_TagString: Untagged
@@ -2517,60 +2602,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1974584395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974584393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 614dccd28dc929e43969441caf7a464a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 684863924}
-  talkText: {fileID: 297207608}
-  triangle: {fileID: 883382654}
---- !u!114 &1974584396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974584393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb62398f91694d4c86bcb907c825301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textFail: {fileID: 4900000, guid: 29f464c788d34864a947e9c00a002188, type: 3}
-  _uitext: {fileID: 1974584395}
-  _branch:
-  - {fileID: 861371275}
-  - {fileID: 1717378767}
-  - {fileID: 598888185}
-  _character:
-  - {fileID: 1650160937}
-  - {fileID: 180220259}
-  - {fileID: 997688936}
-  - {fileID: 1674837506}
-  _backGraund:
-  - {fileID: 985541662}
-  - {fileID: 2074376269}
-  - {fileID: 260313031}
-  - {fileID: 2099951402}
-  - {fileID: 574056506}
-  - {fileID: 1298769140}
-  - {fileID: 1103124417}
-  - {fileID: 1543689531}
-  - {fileID: 1662775133}
-  - {fileID: 736588950}
-  _eventText: {fileID: 181425693}
-  _button:
-  - {fileID: 1700933814}
-  - {fileID: 603773623}
-  - {fileID: 1501637667}
 --- !u!1 &1994893788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2643,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2033448283
 GameObject:

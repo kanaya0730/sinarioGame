@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/TextChatUI-main/Project/Assets/TextChatUI/Scenes/TextChatUI.unity
+    path: Assets/AssetStoreTools/TextChatUI-main/Project/Assets/TextChatUI/Scenes/TextChatUI.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 18d9d9bf4492e74489d0787273b4eb8c
+  - enabled: 1
+    path: Assets/Scenes/SecondScene.unity
+    guid: 0aa948c9c9ab9ec499c16b9a57b50292
   m_configObjects: {}

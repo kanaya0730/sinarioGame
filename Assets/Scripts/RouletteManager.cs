@@ -7,7 +7,7 @@ public class RouletteManager : MonoBehaviour
 {
 	[SerializeField]
 	[Header("GameManagerスクリプト")]
-	GameManager _gameManager;
+	PlayRoulette _playRoulette;
 
 	[SerializeField]
 	[Header("PlayerControlスクリプト")]
@@ -183,28 +183,28 @@ public class RouletteManager : MonoBehaviour
                         switch (resultElementIndex)
                         {
 							case 1:
-								_gameManager.ChangeMainCamera();
-								_gameManager.RouletteText.text = resultElementIndex.ToString();
+								_playRoulette.ChangeMainCamera();
+								_playRoulette.RouletteText.text = resultElementIndex.ToString();
 								_playerControl.MoveCount = resultElementIndex;
 								break;
 							case 2:
-								_gameManager.ChangeMainCamera();
-								_gameManager.RouletteText.text = resultElementIndex.ToString();
+								_playRoulette.ChangeMainCamera();
+								_playRoulette.RouletteText.text = resultElementIndex.ToString();
 								_playerControl.MoveCount = resultElementIndex;
 								break;
 							case 3:
-								_gameManager.ChangeMainCamera();
-								_gameManager.RouletteText.text = resultElementIndex.ToString();
+								_playRoulette.ChangeMainCamera();
+								_playRoulette.RouletteText.text = resultElementIndex.ToString();
 								_playerControl.MoveCount = resultElementIndex;
 								break;
 							case 4:
-								_gameManager.ChangeMainCamera();
-								_gameManager.RouletteText.text = resultElementIndex.ToString();
+								_playRoulette.ChangeMainCamera();
+								_playRoulette.RouletteText.text = resultElementIndex.ToString();
 								_playerControl.MoveCount = resultElementIndex;
 								break;
 							case 5:
-								_gameManager.ChangeMainCamera();
-								_gameManager.RouletteText.text = resultElementIndex.ToString();
+								_playRoulette.ChangeMainCamera();
+								_playRoulette.RouletteText.text = resultElementIndex.ToString();
 								_playerControl.MoveCount = resultElementIndex;
 								break;
 						}

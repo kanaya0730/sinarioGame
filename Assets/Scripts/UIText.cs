@@ -24,6 +24,8 @@ public class UIText : MonoBehaviour
     bool _playing = false;
 
     /// <summary>テキストの表示速度</summary>
+    [SerializeField]
+    [Header("テキストの表示速度")] 
     float textSpeed = 0.1f;
 
     void Update()

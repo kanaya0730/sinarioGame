@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 20642451}
   - component: {fileID: 20642450}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (5)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 161620281}
   - component: {fileID: 161620280}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (28)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 417355551}
   - component: {fileID: 417355550}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (26)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1369,7 +1369,7 @@ GameObject:
   - component: {fileID: 427330040}
   - component: {fileID: 427330039}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (4)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,7 +1450,7 @@ GameObject:
   - component: {fileID: 435802263}
   - component: {fileID: 435802262}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (24)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 469814659}
   - component: {fileID: 469814658}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (29)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1612,7 +1612,7 @@ GameObject:
   - component: {fileID: 477405765}
   - component: {fileID: 477405764}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (3)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1872,8 +1872,10 @@ GameObject:
   m_Component:
   - component: {fileID: 518877848}
   - component: {fileID: 518877847}
+  - component: {fileID: 518877850}
+  - component: {fileID: 518877849}
   m_Layer: 0
-  m_Name: "\u30A4\u30D9\u30F3\u30C8\u30DE\u30B9"
+  m_Name: Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1943,6 +1945,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &518877849
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518877846}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &518877850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518877846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.6}
+  m_EdgeRadius: 0
 --- !u!1 &621903297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,7 +2003,7 @@ GameObject:
   - component: {fileID: 621903299}
   - component: {fileID: 621903298}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (1)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,7 +2324,7 @@ GameObject:
   - component: {fileID: 740773214}
   - component: {fileID: 740773213}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (19)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2356,7 +2405,7 @@ GameObject:
   - component: {fileID: 741829004}
   - component: {fileID: 741829003}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (27)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2613,7 +2662,7 @@ GameObject:
   - component: {fileID: 831225456}
   - component: {fileID: 831225455}
   m_Layer: 0
-  m_Name: "\u30C8\u30FC\u30AF\u30DE\u30B9"
+  m_Name: Talk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2773,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2741,7 +2790,7 @@ GameObject:
   - component: {fileID: 841947959}
   - component: {fileID: 841947958}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (12)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2994,7 +3043,7 @@ GameObject:
   - component: {fileID: 886011665}
   - component: {fileID: 886011664}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (14)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3077,7 +3126,7 @@ GameObject:
   - component: {fileID: 909474042}
   - component: {fileID: 909474043}
   m_Layer: 0
-  m_Name: 00nomal
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,7 +3210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uitext: {fileID: 909474043}
   _textFail: {fileID: 4900000, guid: 29f464c788d34864a947e9c00a002188, type: 3}
-  _gameManager: {fileID: 487434430}
+  _playRoulette: {fileID: 487434430}
 --- !u!114 &909474043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3177,6 +3226,7 @@ MonoBehaviour:
   nameText: {fileID: 164349246}
   talkText: {fileID: 286800417}
   triangle: {fileID: 302707317}
+  textSpeed: 0.05
 --- !u!1 &918404049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3238,7 @@ GameObject:
   - component: {fileID: 918404051}
   - component: {fileID: 918404050}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (7)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3360,7 +3410,7 @@ GameObject:
   - component: {fileID: 932587607}
   - component: {fileID: 932587606}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (2)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3441,7 +3491,7 @@ GameObject:
   - component: {fileID: 996865918}
   - component: {fileID: 996865917}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3522,7 +3572,7 @@ GameObject:
   - component: {fileID: 1141072254}
   - component: {fileID: 1141072253}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (22)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3603,7 +3653,7 @@ GameObject:
   - component: {fileID: 1149553472}
   - component: {fileID: 1149553471}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (25)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3684,7 +3734,7 @@ GameObject:
   - component: {fileID: 1179269344}
   - component: {fileID: 1179269343}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (16)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3765,7 +3815,7 @@ GameObject:
   - component: {fileID: 1227035180}
   - component: {fileID: 1227035179}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (10)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4026,7 +4076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6501285bd931bd94286aef72ffed479f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameManager: {fileID: 487434430}
+  _playRoulette: {fileID: 487434430}
   _playerControl: {fileID: 909474042}
   tf: {fileID: 1317423198}
   elementsRt: {fileID: 291270629}
@@ -4068,7 +4118,7 @@ GameObject:
   - component: {fileID: 1328363087}
   - component: {fileID: 1328363086}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (21)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4149,7 +4199,7 @@ GameObject:
   - component: {fileID: 1367289506}
   - component: {fileID: 1367289505}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (13)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4313,7 +4363,7 @@ GameObject:
   - component: {fileID: 1476494963}
   - component: {fileID: 1476494962}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (0)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4793,7 +4843,7 @@ GameObject:
   - component: {fileID: 1630872404}
   - component: {fileID: 1630872403}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (18)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4874,7 +4924,7 @@ GameObject:
   - component: {fileID: 1668793102}
   - component: {fileID: 1668793101}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (8)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4955,7 +5005,7 @@ GameObject:
   - component: {fileID: 1686146207}
   - component: {fileID: 1686146206}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (23)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5154,7 +5204,7 @@ GameObject:
   - component: {fileID: 1846329589}
   - component: {fileID: 1846329588}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (15)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5312,7 +5362,7 @@ GameObject:
   - component: {fileID: 1895371614}
   - component: {fileID: 1895371613}
   m_Layer: 0
-  m_Name: "\u30C8\u30FC\u30AF\u30DE\u30B9 (1)"
+  m_Name: Talk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5423,7 +5473,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5440,7 +5490,7 @@ GameObject:
   - component: {fileID: 1915124816}
   - component: {fileID: 1915124815}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5521,7 +5571,7 @@ GameObject:
   - component: {fileID: 1942905095}
   - component: {fileID: 1942905094}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (17)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5602,7 +5652,7 @@ GameObject:
   - component: {fileID: 1958277856}
   - component: {fileID: 1958277855}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (11)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5683,7 +5733,7 @@ GameObject:
   - component: {fileID: 2015452586}
   - component: {fileID: 2015452585}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (6)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5763,8 +5813,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2049843192}
   - component: {fileID: 2049843191}
+  - component: {fileID: 2049843194}
+  - component: {fileID: 2049843193}
   m_Layer: 0
-  m_Name: "\u30B9\u30BF\u30FC\u30C8\u30DE\u30B9"
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5834,6 +5886,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2049843193
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049843190}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &2049843194
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049843190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.6}
+  m_EdgeRadius: 0
 --- !u!1 &2064197720
 GameObject:
   m_ObjectHideFlags: 0
@@ -5845,7 +5944,7 @@ GameObject:
   - component: {fileID: 2064197722}
   - component: {fileID: 2064197721}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (20)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5926,7 +6025,7 @@ GameObject:
   - component: {fileID: 2108656985}
   - component: {fileID: 2108656984}
   m_Layer: 0
-  m_Name: "\u901A\u5E38\u30DE\u30B9 (9)"
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6009,7 +6108,7 @@ GameObject:
   - component: {fileID: 2142472930}
   - component: {fileID: 2142472929}
   m_Layer: 0
-  m_Name: "\u30A4\u30D9\u30F3\u30C8\u30DE\u30B9 (1)"
+  m_Name: Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6120,7 +6219,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

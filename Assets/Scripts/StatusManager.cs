@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StatusManager : MonoBehaviour
 {
-    float Love;//恋愛度
-    float cute;//可愛さ
-    float cool;//カッコ良さ
+    int Love;//恋愛度
+
+    int cute;//可愛さ
+    int cool;//カッコ良さ
     
     void Start()
     {

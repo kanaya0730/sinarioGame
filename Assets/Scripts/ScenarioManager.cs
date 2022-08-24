@@ -4,10 +4,9 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
-
-public class UIManager : MonoBehaviour
+/// <summary>シナリオ管理</summary>
+public class ScenarioManager : MonoBehaviour
 {
-    /// <summary>シナリオデータ</summary>
     [SerializeField]
     [Header("シナリオデータ")]
     TextAsset _textFail;
@@ -22,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     [Header("登場キャラクター")]
-    Image[] _character;//[0]主人公,[1]主人公TS,[2]幼馴染男,[3]幼馴染女
+    Image[] _character;
 
     [SerializeField]
     [Header("背景")]
@@ -43,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     bool _branchTime;//条件分岐の確認
 
-    string _eventName;
+    string _eventName;//現在のイベント
 
     void Start()
     {
@@ -55,12 +54,12 @@ public class UIManager : MonoBehaviour
             string line = reader.ReadLine();
             _csvData.Add(line.Split(','));
         }
+
         _eventText.text = "～オープニング～";
         Buttonfalse();
         TextReset();
         StartCoroutine(Cotext());
     }
-
     /// <summary>クリックでテキストを一気に表示</summary>
     IEnumerator Skip()
     {
@@ -122,8 +121,33 @@ public class UIManager : MonoBehaviour
                 _backGraund[1].gameObject.SetActive(true);
                 _character[1].gameObject.SetActive(true);
                 break;
+            case 44:
+                SceneManager.LoadScene("GameScene");
+                _branchTime = true;
+                _eventName = "Sugoroku";
+                break;
             case 45:
-                SceneManager.LoadScene("MainScene");
+                _eventText.text = "～TS生活：0日目～";
+                _backGraund[7].gameObject.SetActive(true);
+                _character[1].gameObject.SetActive(true);
+                break;
+            case 46:
+                _backGraund[9].gameObject.SetActive(true);
+                _character[2].gameObject.SetActive(true);
+                break;
+            case 48:
+                _character[3].gameObject.SetActive(true);
+                break;
+            case 49:
+                _backGraund[7].gameObject.SetActive(false);
+                _backGraund[9].gameObject.SetActive(false);
+                _backGraund[8].gameObject.SetActive(true);
+                _character[2].gameObject.SetActive(false);
+                _character[3].gameObject.SetActive(false);
+                //チャイム音
+                break;
+            case 54:
+                //ミニゲーム
                 break;
         }
     }
@@ -144,6 +168,9 @@ public class UIManager : MonoBehaviour
                     _branch[0].text = _csvData[1][2];
                     _branch[1].text = _csvData[2][2];
                     _branch[2].text = _csvData[3][2];
+                    break;
+                case "Sugoroku":
+
                     break;
             }
         }
@@ -167,6 +194,12 @@ public class UIManager : MonoBehaviour
         _branchTime = false;
         TextReset();
         Buttonfalse();
+        StartCoroutine("Cotext");
+    }
+    public void SchoolText()
+    {
+        _textID = 45;
+        _branchTime = false;
         StartCoroutine("Cotext");
     }
 }

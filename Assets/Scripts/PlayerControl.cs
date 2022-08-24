@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
     public int MoveCount { get => _moveCount; set => _moveCount = value; }
+
+    ScenarioManager _scenarioManager;
 
     [SerializeField]
     [Header("UITextスクリプト")]
@@ -18,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField]
     [Header("GameManagerスクリプト")]
-    GameManager _gameManager;
+    PlayRoulette _playRoulette;
 
     List<string[]> _csvData = new List<string[]>();//CSVデータの保存場所
 
@@ -26,8 +29,13 @@ public class PlayerControl : MonoBehaviour
 
     float _speed = 2.5f;
 
+    int ID = 1;
+
+    bool Goal = false;
     void Start()
     {
+        _scenarioManager = FindObjectOfType<ScenarioManager>();
+
         //_textFail = Resources.Load(_fileName) as TextAsset;
         StringReader reader = new StringReader(_textFail.text);
 
@@ -100,25 +108,32 @@ public class PlayerControl : MonoBehaviour
                     ChangeRoulette();
                 }
             }
-            else if (transform.position.x == -3.5f)
+            else if (transform.position.x == -3.5f && Goal == false)
             {
-                StartCoroutine(Cotext());
+                Goal = true;
+                StartCoroutine(Goaltext());
             }
         }
         transform.position = position;
     }
-    IEnumerator Cotext()
+    IEnumerator Goaltext()
     {
-
-        _uitext.DrawText(_csvData[45][0], _csvData[45][1]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[ID][7], _csvData[ID][8]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
+        ID++;
+
+        if(ID == 4)
+        {
+            SceneManager.LoadScene("SecondScene");
+        }
+        StartCoroutine(Goaltext());
     }
     public void ChangeRoulette()
     {
-        _gameManager.RouletteText.text = MoveCount.ToString();
+        _playRoulette.RouletteText.text = MoveCount.ToString();
         if (MoveCount <= 0)
         {
-            _gameManager.ChangeSubCamera();
+            _playRoulette.ChangeSubCamera();
         }
     }
 }
