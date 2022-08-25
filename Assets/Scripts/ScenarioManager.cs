@@ -117,7 +117,7 @@ public class ScenarioManager : MonoBehaviour
                 break;
             case 22:
                 _backGraund[4].gameObject.SetActive(false);
-                _eventText.text = "～TS生活：0日目～";
+                _eventText.text = "～日常？～";
                 _backGraund[1].gameObject.SetActive(true);
                 _character[1].gameObject.SetActive(true);
                 break;
@@ -127,7 +127,7 @@ public class ScenarioManager : MonoBehaviour
                 _eventName = "Sugoroku";
                 break;
             case 45:
-                _eventText.text = "～TS生活：0日目～";
+                _eventText.text = "～日常？～";
                 _backGraund[7].gameObject.SetActive(true);
                 _character[1].gameObject.SetActive(true);
                 break;
@@ -146,8 +146,13 @@ public class ScenarioManager : MonoBehaviour
                 _character[3].gameObject.SetActive(false);
                 //チャイム音
                 break;
-            case 54:
+            case 53:
                 //ミニゲーム
+                SceneManager.LoadScene("MiniGameScene");
+                break;
+            case 54:
+                _branchTime = true;
+                _eventText.text = "～放課後～";
                 break;
         }
     }

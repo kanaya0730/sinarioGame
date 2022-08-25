@@ -31,103 +31,98 @@ public class MiniGame : MonoBehaviour
     string question;
     int _clearNum;
     int sum;
+
+    [SerializeField]
+    [Header("Panel")]
+    GameObject _panel;
+
+    int[] _maxNum = { 11,101,1001,10001, };
+
+    int _numID;
+
+    bool _play;
     void Start()
     {
+        _play = false;
         _answerText.text = "?";
-        tinpo();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _timer.text = _timeLimit.ToString("f1");
 
-        if (_timeLimit <= 0)
-        {
-            _timeLimit = 0;
-        }
-        else
-        {
-            _timeLimit -= Time.deltaTime;
-        }
         _questionText.text = question;
         _answerText.text = answer;
-        //switch(question)
-        //{
-        //    case "1+1=?":
-        //        if(answer == "2")
-        //        {
-        //            //正解音
-        //            _questionText.text = "3×8=?";
-        //            answer = "";
-        //            //_clearNum += 1;
-        //        }
-        //        break;
-        //    case "3×8=?":
-        //        if(answer == "24")
-        //        {
-        //            //正解音
-        //            _questionText.text = "10+8+5+4=?";
-        //            answer = "";
-        //            //_clearNum += 1;
-        //        }
-        //        break;
-        //    case "10+8+5+4=?":
-        //        if (answer == "27")
-        //        {
-        //            //正解音
-        //            _questionText.text = "10×8×5×4=?";
-        //            answer = "";
-        //            //_clearNum += 1;
-        //        }
-        //        break;
-        //    case "10×8×5×4=?":
-        //        if (answer == "1600")
-        //        {
-        //            //正解音
-        //            _questionText.text = "100+7+54-20=?";
-        //            answer = "";
-        //            //_clearNum += 1;
-        //        }
-        //        break;
-        //    case "100+7+54-20=?":
-        //        if (answer == "141")
-        //        {
-        //            //正解音
-        //            _questionText.text = "10×8×5×4=?";
-        //            answer = "";
-        //            //_clearNum += 1;
-        //        }
-        //        break;
-        //}
+        _resultText.text = _clearNum.ToString();
+        _timer.text = _timeLimit.ToString("f1");
+
+        if(_play == true)
+        {
+            if (_timeLimit <= 0)
+            {
+                _timeLimit = 0;
+                answer = "お疲れ様です。";
+                inputField.text = "お疲れ様です。";
+            }
+            else
+            {
+                _timeLimit -= Time.deltaTime;
+            }
+        }
+
+        if (sum == int.Parse(answer))
+        {
+            Math();
+            _clearNum += 1;
+        }
     }
     public void GetInputplayerName()
-    {
-        //InputFieldからテキスト情報を取得する
-        answer = inputField.text;
+    {     
+        answer = inputField.text; //InputFieldからテキスト情報を取得する
+        inputField.text = "";//入力フォームのテキストを空にする
         Debug.Log(answer);
-        //入力フォームのテキストを空にする
-        inputField.text = "";
     }
 
-    void tinpo()
+    void Math()
     {
-        int a = Random.Range(1,11);
-        int b = Random.Range(1, 11);
+        int a = Random.Range(1, _maxNum[_numID]);
+        int b = Random.Range(1, _maxNum[_numID]);
 
-        int sum = a + b;
+        sum = a + b;
 
-        Debug.Log(a);
-        Debug.Log(b);
         Debug.Log(sum);
-        
+        question = a + "+" + b + "=?";
+    }
 
-        question = $"{a}+{b}=?";
+    public void Easy()
+    {
+        _numID = 0;
+        _panel.SetActive(false);
+        _play = true;
+        Math();
+    }
 
-        if(sum == int.Parse(answer))
-        {
-            print("おめでとうございます");
-            tinpo();
-        }
+    public void Normal()
+    {
+        _numID = 1;
+        _panel.SetActive(false);
+        _play = true;
+        Math();
+    }
+
+    public void Hard()
+    {
+        _numID = 2;
+        _panel.SetActive(false);
+        _play = true;
+        Math();
+    }
+
+    public void Master()
+    {
+        _numID = 3;
+        _panel.SetActive(false);
+        _play = true;
+        Math();
     }
 }
