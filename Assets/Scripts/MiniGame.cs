@@ -27,6 +27,10 @@ public class MiniGame : MonoBehaviour
     [Header("制限時間")]
     float _timeLimit;
 
+
+    [SerializeField]
+    [Header("現在の日付")]
+    Text _dayText;
     string answer;
     string question;
     int _clearNum;
@@ -36,21 +40,24 @@ public class MiniGame : MonoBehaviour
     [Header("Panel")]
     GameObject _panel;
 
-    int[] _maxNum = { 11,101,1001,10001, };
+    int[] _maxNum = { 11,101,1001,10001,100001, };
 
     int _numID;
 
     bool _play;
+    System.DateTime dt;
     void Start()
     {
         _play = false;
         _answerText.text = "?";
+        //_timer.text = System.DateTime.Now.ToString();
+        dt = System.DateTime.Now;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        _dayText.text = dt.Year.ToString() + "年" + dt.Month.ToString() + "月" + dt.Day.ToString() + "日";
         _questionText.text = question;
         _answerText.text = answer;
         _resultText.text = _clearNum.ToString();
@@ -62,7 +69,7 @@ public class MiniGame : MonoBehaviour
             {
                 _timeLimit = 0;
                 answer = "お疲れ様です。";
-                inputField.text = "お疲れ様です。";
+                inputField.text = "00000000";
             }
             else
             {
@@ -125,4 +132,12 @@ public class MiniGame : MonoBehaviour
         _play = true;
         Math();
     }
+    public void Predator()
+    {
+        _numID = 4;
+        _panel.SetActive(false);
+        _play = true;
+        Math();
+    }
+
 }

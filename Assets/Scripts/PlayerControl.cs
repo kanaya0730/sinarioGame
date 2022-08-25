@@ -130,10 +130,13 @@ public class PlayerControl : MonoBehaviour
     }
     public void ChangeRoulette()
     {
-        _playRoulette.RouletteText.text = MoveCount.ToString();
-        if (MoveCount <= 0)
+        if(Goal == false)
         {
-            _playRoulette.ChangeSubCamera();
+            _playRoulette.RouletteText.text = MoveCount.ToString();
+            if (MoveCount <= 0)
+            {
+                _playRoulette.ChangeSubCamera();
+            }
         }
     }
 }

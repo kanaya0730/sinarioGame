@@ -148,11 +148,22 @@ public class ScenarioManager : MonoBehaviour
                 break;
             case 53:
                 //ミニゲーム
-                SceneManager.LoadScene("MiniGameScene");
+                _branchTime = true;
+                SceneManager.LoadScene("MathScene");
                 break;
             case 54:
-                _branchTime = true;
                 _eventText.text = "～放課後～";
+                _character[1].gameObject.SetActive(true);
+                break;
+            case 55:
+                _character[2].gameObject.SetActive(true);
+                break;
+            case 56:
+                _character[3].gameObject.SetActive(true);
+                break;
+            case 59:
+                _character[2].gameObject.SetActive(false);
+                _character[3].gameObject.SetActive(false);
                 break;
         }
     }
@@ -204,6 +215,12 @@ public class ScenarioManager : MonoBehaviour
     public void SchoolText()
     {
         _textID = 45;
+        _branchTime = false;
+        StartCoroutine("Cotext");
+    }
+    public void AfterSchoolText()
+    {
+        _textID = 54;
         _branchTime = false;
         StartCoroutine("Cotext");
     }

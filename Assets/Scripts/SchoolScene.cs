@@ -5,6 +5,6 @@ using UnityEngine;
 public class SchoolScene : MonoBehaviour
 {
     ScenarioManager _scenarioManager;
-    void Start() => _scenarioManager.SchoolText();
+    private void Start() => _scenarioManager.SchoolText();
     private void Awake() => _scenarioManager = FindObjectOfType<ScenarioManager>();
 }
