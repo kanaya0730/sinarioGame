@@ -121,13 +121,8 @@ public class ScenarioManager : MonoBehaviour
                 _backGraund[1].gameObject.SetActive(true);
                 _character[1].gameObject.SetActive(true);
                 break;
-            case 44:
-                SceneManager.LoadScene("GameScene");
-                _branchTime = true;
-                _eventName = "Sugoroku";
-                break;
             case 45:
-                _eventText.text = "～日常？～";
+                _backGraund[1].gameObject.SetActive(false);
                 _backGraund[7].gameObject.SetActive(true);
                 _character[1].gameObject.SetActive(true);
                 break;
@@ -152,16 +147,35 @@ public class ScenarioManager : MonoBehaviour
                 SceneManager.LoadScene("MathScene");
                 break;
             case 54:
-                _eventText.text = "～放課後～";
-                _character[1].gameObject.SetActive(true);
+                _backGraund[9].gameObject.SetActive(true);
                 break;
             case 55:
                 _character[2].gameObject.SetActive(true);
                 break;
             case 56:
+                _character[1].gameObject.SetActive(true);
+                break;
+            case 57:
                 _character[3].gameObject.SetActive(true);
                 break;
-            case 59:
+            case 65:
+                _character[1].gameObject.SetActive(false);
+                _character[2].gameObject.SetActive(false);
+                _character[3].gameObject.SetActive(false);
+                _branchTime = true;
+                SceneManager.LoadScene("NationalScene");
+                break;
+            case 66:
+                _eventText.text = "～放課後～";
+                _character[1].gameObject.SetActive(true);
+                break;
+            case 67:
+                _character[2].gameObject.SetActive(true);
+                break;
+            case 68:
+                _character[3].gameObject.SetActive(true);
+                break;
+            case 72:
                 _character[2].gameObject.SetActive(false);
                 _character[3].gameObject.SetActive(false);
                 break;
@@ -212,9 +226,9 @@ public class ScenarioManager : MonoBehaviour
         Buttonfalse();
         StartCoroutine("Cotext");
     }
-    public void SchoolText()
+    public void BreakText()
     {
-        _textID = 45;
+        _textID = 54;
         _branchTime = false;
         StartCoroutine("Cotext");
     }
