@@ -6,6 +6,8 @@ public class UIText : MonoBehaviour
 {
     public bool Playing => _playing;
 
+    SoundManager _soundManager;
+
     /// <summary>喋っている人の名前</summary>
     [SerializeField]
     [Header("喋っている人の名前")]
@@ -21,6 +23,8 @@ public class UIText : MonoBehaviour
     [Header("テキストエフェクト")]
     GameObject triangle;
 
+    /// <summary>テキスト判定</summary>
+    [SerializeField]
     bool _playing = false;
 
     /// <summary>テキストの表示速度</summary>
@@ -28,6 +32,10 @@ public class UIText : MonoBehaviour
     [Header("テキストの表示速度")] 
     float textSpeed = 0.1f;
 
+    void Start()
+    {
+        _soundManager = FindObjectOfType<SoundManager>();
+    }
     void Update()
     {
         switch(_playing)
@@ -44,7 +52,7 @@ public class UIText : MonoBehaviour
     /// <summary>クリックで次のページを表示させる</summary>
     public bool IsClicked()
     {
-        if (Input.GetMouseButtonDown(0)) return true;
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) return true;
         return false;
     }
     public void DrawText(string name, string text)

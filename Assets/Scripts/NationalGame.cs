@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>国語のテスト</summary>
 public class NationalGame : MonoBehaviour
 {
+    StatusManager _statusManager;
+
     [SerializeField]
     GameObject inputFieldGameObject;
 
@@ -35,8 +38,9 @@ public class NationalGame : MonoBehaviour
 
     string answer;
 
+    /// <summary>問題内容</summary>
     string[] question = { "究極","暗黒","終焉","幻想","刹那","虚空","月蝕", "煉獄","混沌","深淵","漆黒","死線","殲滅",};
-
+    /// <summary>問題の答え</summary>
     string[] _clearText = {"きゅうきょく","あんこく","しゅうえん","げんそう","せつな","こくう","げっしょく","れんごく","こんとん","しんえん","しっこく","しせん","せんめつ",};
 
 
@@ -57,6 +61,8 @@ public class NationalGame : MonoBehaviour
         _answerText.text = "?";
         dt = System.DateTime.Now;
         National();
+
+        _statusManager = FindObjectOfType<StatusManager>();
     }
 
     void Update()
@@ -174,17 +180,21 @@ public class NationalGame : MonoBehaviour
         inputField.text = "";//入力フォームのテキストを空にする
         Debug.Log(answer);
     }
-
+    /// <summary>ランダムに出力</summary>
     public void National()
     {
         _iD = Random.Range(1,13);
     }
+
+    /// <summary>次の問題へ</summary>
     public void Next()
     {
         _clearNum += 1;
         _answerText.text = "";
-         National();
+        _statusManager.PlusSmart();
+        National();
     }
+    /// <summary>ゲームスタート</summary>
     public void Play()
     {
         _panel.SetActive(false);

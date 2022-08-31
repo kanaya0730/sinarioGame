@@ -1,12 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using System.IO;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 /// <summary>シナリオ管理</summary>
 public class ScenarioManager : MonoBehaviour
 {
+    StatusManager _statusManager;
+
     [SerializeField]
     [Header("シナリオデータ")]
     TextAsset _textFail;
@@ -46,6 +49,7 @@ public class ScenarioManager : MonoBehaviour
 
     void Start()
     {
+        _statusManager = FindObjectOfType<StatusManager>();
         //_textFail = Resources.Load(_fileName) as TextAsset;
         StringReader reader = new StringReader(_textFail.text);
 
@@ -90,97 +94,97 @@ public class ScenarioManager : MonoBehaviour
     }
     void Update()
     {
+        switch(_csvData[_textID][0])
+        {
+            case "悠希(ゆうき)":
+                _character[0].gameObject.SetActive(true);
+                break;
+            case "悠希":
+                _character[1].gameObject.SetActive(true);
+                break;
+            case "冬馬":
+                _character[2].gameObject.SetActive(true);
+                break;
+            case "凜":
+                _character[3].gameObject.SetActive(true);
+                break;
+        }
+
         switch (_textID)
         {
             case 1:
                 _backGraund[0].gameObject.SetActive(true);
-                _character[0].gameObject.SetActive(true);
                 break;
-            case 2:
-                _character[2].gameObject.SetActive(true);
-                _character[3].gameObject.SetActive(true);
-                break;
+
             case 5:
                 _branchTime = true;
                 _eventName = "Branch1";
                 break;
+
             case 17:
-                _character[3].gameObject.SetActive(false);
-                _character[2].gameObject.SetActive(false);
                 _backGraund[0].gameObject.SetActive(false);
-                _character[0].gameObject.SetActive(false);
                 _backGraund[3].gameObject.SetActive(true);
+                for (int i = 0; i < 4; i++)
+                {
+                    _character[i].gameObject.SetActive(false);
+                }
                 break;
+
             case 18:
-                _backGraund[4].gameObject.SetActive(true);
                 _backGraund[3].gameObject.SetActive(false);
+                _backGraund[4].gameObject.SetActive(true);
                 break;
+
             case 22:
                 _backGraund[4].gameObject.SetActive(false);
                 _eventText.text = "～日常？～";
                 _backGraund[1].gameObject.SetActive(true);
-                _character[1].gameObject.SetActive(true);
                 break;
+
             case 45:
                 _backGraund[1].gameObject.SetActive(false);
                 _backGraund[7].gameObject.SetActive(true);
-                _character[1].gameObject.SetActive(true);
                 break;
+
             case 46:
                 _backGraund[9].gameObject.SetActive(true);
-                _character[2].gameObject.SetActive(true);
                 break;
-            case 48:
-                _character[3].gameObject.SetActive(true);
-                break;
+
             case 49:
                 _backGraund[7].gameObject.SetActive(false);
                 _backGraund[9].gameObject.SetActive(false);
                 _backGraund[8].gameObject.SetActive(true);
-                _character[2].gameObject.SetActive(false);
-                _character[3].gameObject.SetActive(false);
                 //チャイム音
                 break;
+
             case 53:
                 //ミニゲーム
                 _branchTime = true;
                 SceneManager.LoadScene("MathScene");
                 break;
+
             case 54:
                 _backGraund[9].gameObject.SetActive(true);
                 break;
-            case 55:
-                _character[2].gameObject.SetActive(true);
-                break;
-            case 56:
-                _character[1].gameObject.SetActive(true);
-                break;
-            case 57:
-                _character[3].gameObject.SetActive(true);
-                break;
+
             case 65:
-                _character[1].gameObject.SetActive(false);
-                _character[2].gameObject.SetActive(false);
-                _character[3].gameObject.SetActive(false);
                 _branchTime = true;
                 SceneManager.LoadScene("NationalScene");
                 break;
+
             case 66:
                 _eventText.text = "～放課後～";
-                _character[1].gameObject.SetActive(true);
-                break;
-            case 67:
-                _character[2].gameObject.SetActive(true);
-                break;
-            case 68:
-                _character[3].gameObject.SetActive(true);
                 break;
             case 72:
-                _character[2].gameObject.SetActive(false);
-                _character[3].gameObject.SetActive(false);
+                for (int i = 0; i < 4; i++)
+                {
+                    _character[i].gameObject.SetActive(false);
+                }
                 break;
         }
     }
+
+    /// <summary>イベントフラグが立っているか確認</summary>
     public void TextCheck()
     {
         if(_branchTime == false)
@@ -199,42 +203,33 @@ public class ScenarioManager : MonoBehaviour
                     _branch[1].text = _csvData[2][2];
                     _branch[2].text = _csvData[3][2];
                     break;
-                case "Sugoroku":
-
-                    break;
             }
         }
     }
-    public void ButtonA()
+    /// <summary>ボタンクリック</summary>
+    public void Button()
+    {
+        ButtonClick();
+    }
+    public void ButtonClick()
     {
         _branchTime = false;
         TextReset();
         Buttonfalse();
         StartCoroutine("Cotext");
     }
-    public void ButtonB()
-    {
-        _branchTime = false;
-        TextReset();
-        Buttonfalse();
-        StartCoroutine("Cotext");
-    } 
-    public void ButtonC()
-    {
-        _branchTime = false;
-        TextReset();
-        Buttonfalse();
-        StartCoroutine("Cotext");
-    }
+    /// <summary>休み時間のストーリーから</summary>
     public void BreakText()
     {
         _textID = 54;
         _branchTime = false;
         StartCoroutine("Cotext");
     }
+
+    /// <summary>放課後のストーリーから</summary>
     public void AfterSchoolText()
     {
-        _textID = 54;
+        _textID = 66;
         _branchTime = false;
         StartCoroutine("Cotext");
     }

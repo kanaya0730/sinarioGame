@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+/// <summary>数学のテスト</summary>
 public class MathGame : MonoBehaviour
 {
+    StatusManager _statusManager;
+
     [SerializeField]
     GameObject inputFieldGameObject;
 
@@ -50,11 +54,10 @@ public class MathGame : MonoBehaviour
     {
         _play = false;
         _answerText.text = "?";
-        //_timer.text = System.DateTime.Now.ToString();
         dt = System.DateTime.Now;
+        _statusManager = FindObjectOfType<StatusManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _dayText.text = "日付" + dt.Year.ToString() + "年" + dt.Month.ToString() + "月" + dt.Day.ToString() + "日";
@@ -82,6 +85,7 @@ public class MathGame : MonoBehaviour
         {
             Math();
             _clearNum += 1;
+            _statusManager.PlusSmart();
         }
     }
     public void GetInputplayerName()
@@ -105,40 +109,36 @@ public class MathGame : MonoBehaviour
     public void Easy()
     {
         _numID = 0;
-        _panel.SetActive(false);
-        _play = true;
-        Math();
+        Play();
     }
 
     public void Normal()
     {
         _numID = 1;
-        _panel.SetActive(false);
-        _play = true;
-        Math();
+        Play();
     }
 
     public void Hard()
     {
         _numID = 2;
-        _panel.SetActive(false);
-        _play = true;
-        Math();
+        Play();
     }
 
     public void Master()
     {
         _numID = 3;
-        _panel.SetActive(false);
-        _play = true;
-        Math();
+        Play();
     }
     public void Predator()
     {
         _numID = 4;
+        Play();
+    }
+
+    public void Play()
+    {
         _panel.SetActive(false);
         _play = true;
         Math();
     }
-
 }
