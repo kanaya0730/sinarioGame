@@ -660,7 +660,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: Button
+        m_MethodName: ButtonB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1836,7 +1836,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: Button
+        m_MethodName: ButtonC
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2436,7 +2436,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: Button
+        m_MethodName: ButtonA
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2666,6 +2666,7 @@ MonoBehaviour:
   _smart: 0
   _cute: 0
   _cool: 0
+  _crazy: 0
 --- !u!4 &1994893790
 Transform:
   m_ObjectHideFlags: 0

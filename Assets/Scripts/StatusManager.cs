@@ -12,6 +12,8 @@ public class StatusManager : MonoBehaviour
 
     public int Cool => _cool;
 
+    public static StatusManager instance = null;
+
     /// <summary>好感度</summary>
     [SerializeField]
     [Header("好感度")]
@@ -31,7 +33,24 @@ public class StatusManager : MonoBehaviour
     [SerializeField]
     [Header("カッコ良さ")]
     int _cool = 0;
-    
+
+    /// <summary>クレイジー</summary>
+    [SerializeField]
+    [Header("クレイジー")]
+    int _crazy = 0;
+    /// <summary>ビルド時に呼ばれる</summary>
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     public void PlusLove()
     {
         _love += 1;
@@ -49,5 +68,16 @@ public class StatusManager : MonoBehaviour
     public void PlusCool()
     {
         _cool += 1;
+    }
+    public void PlusCrazy()
+    {
+        _crazy += 1;
+    }
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log(Love + "," + Smart + "," + Cute + "," + Cool);
+        }
     }
 }

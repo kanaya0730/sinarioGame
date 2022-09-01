@@ -207,8 +207,19 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     /// <summary>ボタンクリック</summary>
-    public void Button()
+    public void ButtonA()
     {
+        _statusManager.PlusCute();
+        ButtonClick();
+    }
+    public void ButtonB()
+    {
+        _statusManager.PlusCute();
+        ButtonClick();
+    }
+    public void ButtonC()
+    {
+        _statusManager.PlusCrazy();
         ButtonClick();
     }
     public void ButtonClick()

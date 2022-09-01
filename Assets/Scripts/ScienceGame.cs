@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>国語のテスト</summary>
-public class NationalGame : MonoBehaviour
+public class ScienceGame : MonoBehaviour
 {
     StatusManager _statusManager;
 
@@ -39,9 +39,9 @@ public class NationalGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "究極","暗黒","終焉","幻想","刹那","虚空","月蝕", "煉獄","混沌","深淵","漆黒","死線","殲滅",};
+    string[] question = { "H","C","N","O","Na","Mg","Ca","チタン","Fe","銀","Pt","金","Hg",};
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"きゅうきょく","あんこく","しゅうえん","げんそう","せつな","こくう","げっしょく","れんごく","こんとん","しんえん","しっこく","しせん","せんめつ",};
+    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム","カルシウム","Ti","鉄","Ag","白金", "Au", "水銀",};
 
 
     [SerializeField]
@@ -93,7 +93,7 @@ public class NationalGame : MonoBehaviour
 
         switch (question[_iD])
         {
-            case "究極":
+            case "H":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -101,7 +101,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "暗黒":
+            case "C":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -109,7 +109,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "終焉":
+            case "N":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -117,7 +117,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "幻想":
+            case "O":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -125,7 +125,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "刹那":
+            case "Na":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -133,7 +133,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "虚空":
+            case "Mg":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -141,7 +141,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "月蝕":
+            case "ca":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -149,7 +149,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "煉獄":
+            case "チタン":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -157,7 +157,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "混沌":
+            case "Fe":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -165,7 +165,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "深淵":
+            case "銀":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -173,7 +173,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "漆黒":
+            case "Pt":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -181,7 +181,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "死線":                
+            case "金":                
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -189,7 +189,7 @@ public class NationalGame : MonoBehaviour
                     _statusManager.PlusSmart();
                 }
                 break;
-            case "殲滅":
+            case "Hg":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
