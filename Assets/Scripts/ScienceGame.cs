@@ -39,9 +39,10 @@ public class ScienceGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "H","C","N","O","Na","Mg","Ca","チタン","Fe","銀","Pt","金","Hg",};
+    string[] question = { "H","C","N","O","Na","Mg", "カルシウム", "チタン","Fe","銀","Pt","金","Hg",};
+
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム","カルシウム","Ti","鉄","Ag","白金", "Au", "水銀",};
+    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム", "Ca", "Ti","鉄","Ag","白金", "Au", "水銀",};
 
 
     [SerializeField]
@@ -60,7 +61,7 @@ public class ScienceGame : MonoBehaviour
         _play = false;
         _answerText.text = "?";
         dt = System.DateTime.Now;
-        National();
+       Science();
 
         _statusManager = FindObjectOfType<StatusManager>();
     }
@@ -98,7 +99,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "C":
@@ -106,7 +107,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "N":
@@ -114,7 +115,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "O":
@@ -122,7 +123,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "Na":
@@ -130,7 +131,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "Mg":
@@ -138,7 +139,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "ca":
@@ -146,7 +147,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "チタン":
@@ -154,7 +155,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "Fe":
@@ -162,7 +163,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "銀":
@@ -170,7 +171,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "Pt":
@@ -178,7 +179,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "金":                
@@ -186,7 +187,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
             case "Hg":
@@ -194,20 +195,22 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusScience();
                 }
                 break;
         }
     }
 
+    /// <summary>InputFileldの入力</summary>
     public void GetInputplayerName()
     {
         answer = inputField.text; //InputFieldからテキスト情報を取得する
         inputField.text = "";//入力フォームのテキストを空にする
         Debug.Log(answer);
     }
+
     /// <summary>ランダムに出力</summary>
-    public void National()
+    public void Science()
     {
         _iD = Random.Range(1,13);
     }
@@ -216,7 +219,7 @@ public class ScienceGame : MonoBehaviour
     public void Next()
     {
         _answerText.text = "";
-        National();
+        Science();
     }
     /// <summary>ゲームスタート</summary>
     public void Play()

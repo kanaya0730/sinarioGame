@@ -98,7 +98,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "暗黒":
@@ -106,7 +106,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "終焉":
@@ -114,7 +114,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "幻想":
@@ -122,7 +122,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "刹那":
@@ -130,7 +130,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "虚空":
@@ -138,7 +138,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "月蝕":
@@ -146,7 +146,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "煉獄":
@@ -154,7 +154,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "混沌":
@@ -162,7 +162,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "深淵":
@@ -170,7 +170,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "漆黒":
@@ -178,7 +178,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "死線":                
@@ -186,7 +186,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
             case "殲滅":
@@ -194,7 +194,7 @@ public class NationalGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusSmart();
+                    _statusManager.PlusNationa();
                 }
                 break;
         }

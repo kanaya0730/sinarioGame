@@ -64,7 +64,7 @@ public class MathGame : MonoBehaviour
         _questionText.text = question;
         _answerText.text = answer;
         _resultText.text = _clearNum.ToString();
-        _timer.text = _timeLimit.ToString("f1");
+        _timer.text = _timeLimit.ToString("f0");
 
         if(_play == true)
         {
@@ -85,7 +85,7 @@ public class MathGame : MonoBehaviour
         {
             Math();
             _clearNum += 1;
-            _statusManager.PlusSmart();
+            _statusManager.PlusNationa();
         }
     }
     public void GetInputplayerName()

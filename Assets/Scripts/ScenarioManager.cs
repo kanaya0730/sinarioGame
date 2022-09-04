@@ -73,7 +73,7 @@ public class ScenarioManager : MonoBehaviour
 
     IEnumerator Cotext()
     {
-        _uitext.DrawText(_csvData[_textID][0], _csvData[_textID][1]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][1], _csvData[_textID][2]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
         TextCheck();
@@ -199,9 +199,9 @@ public class ScenarioManager : MonoBehaviour
                     _button[0].gameObject.SetActive(true);
                     _button[1].gameObject.SetActive(true);
                     _button[2].gameObject.SetActive(true);
-                    _branch[0].text = _csvData[1][2];
-                    _branch[1].text = _csvData[2][2];
-                    _branch[2].text = _csvData[3][2];
+                    _branch[0].text = _csvData[1][3];
+                    _branch[1].text = _csvData[2][3];
+                    _branch[2].text = _csvData[3][3];
                     break;
             }
         }
@@ -209,19 +209,28 @@ public class ScenarioManager : MonoBehaviour
     /// <summary>ボタンクリック</summary>
     public void ButtonA()
     {
-        _statusManager.PlusCute();
+        _statusManager.PlusGirlsFriend();
         ButtonClick();
     }
+
     public void ButtonB()
     {
-        _statusManager.PlusCute();
+        _statusManager.PlusBoyFriend();
         ButtonClick();
     }
+
     public void ButtonC()
+    {
+        _statusManager.PlusArcadeFriend();
+        ButtonClick();
+    }
+
+    public void ButtonD()
     {
         _statusManager.PlusCrazy();
         ButtonClick();
     }
+
     public void ButtonClick()
     {
         _branchTime = false;
@@ -229,6 +238,7 @@ public class ScenarioManager : MonoBehaviour
         Buttonfalse();
         StartCoroutine("Cotext");
     }
+
     /// <summary>休み時間のストーリーから</summary>
     public void BreakText()
     {

@@ -4,40 +4,60 @@ using UnityEngine;
 /// <summary>隠しステータス管理</summary>
 public class StatusManager : MonoBehaviour
 {
-    public int Love => _love;
+    public int National => _national;
 
-    public int Smart => _smart;
+    public int Math => _math;
 
-    public int Cute => _cute;
+    public int Scienece => _science;
 
-    public int Cool => _cool;
+    public int Boyfriend => _boyfriend;
+
+    public int Girlsfriend　=> _girlsfriend;
+
+    public int Arcadefriend => _arcadefriend;
 
     public static StatusManager instance = null;
 
-    /// <summary>好感度</summary>
+    /// <summary>冬馬の好感度</summary>
     [SerializeField]
     [Header("好感度")]
-    int _love = 0;
+    int _boyfriend = 0;
 
-    /// <summary>賢さ</summary>
+    /// <summary>凜の好感度</summary>
     [SerializeField]
-    [Header("賢さ")]
-    int _smart = 0;
+    [Header("好感度")]
+    int _girlsfriend = 0;
 
-    /// <summary>可愛さ</summary>
+    /// <summary>晶の好感度</summary>
     [SerializeField]
-    [Header("可愛さ")]
-    int _cute = 0;
+    [Header("好感度")]
+    int _arcadefriend = 0;
 
-    /// <summary>カッコ良さ</summary>
+    /// <summary>国語の合計正解数</summary>
     [SerializeField]
-    [Header("カッコ良さ")]
-    int _cool = 0;
+    [Header("国語")]
+    int _national = 0;
+
+    /// <summary>数学の合計正解数</summary>
+    [SerializeField]
+    [Header("数学")]
+    int _math = 0;
+
+    /// <summary>科学の合計正解数</summary>
+    [SerializeField]
+    [Header("科学")]
+    int _science = 0;
+
+    /// <summary>社会の合計正解数</summary>
+    [SerializeField]
+    [Header("歴史")]
+    int _history = 0;
 
     /// <summary>クレイジー</summary>
     [SerializeField]
     [Header("クレイジー")]
     int _crazy = 0;
+
     /// <summary>ビルド時に呼ばれる</summary>
     private void Awake()
     {
@@ -51,33 +71,60 @@ public class StatusManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void PlusLove()
+    public void Update()
     {
-        _love += 1;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("現在のステータス：" + "冬馬の好感度" + _boyfriend + "凜の好感度" + _girlsfriend + "晶の好感度" + _arcadefriend);
+            Debug.Log("国語" + _national + "数学" + _math + "科学" + _science + "社会" + _history);
+        }
     }
 
-    public void PlusSmart()
+    /// <summary>t冬馬の好感度を+1</summary>
+    public void PlusBoyFriend()
     {
-        _smart += 1;
+        _boyfriend += 1;
     }
 
-    public void PlusCute()
+    /// <summary>凜の好感度を+1</summary>
+    public void PlusGirlsFriend()
     {
-        _cute += 1;
+        _girlsfriend += 1;
     }
-    public void PlusCool()
+
+    /// <summary>晶の好感度を+1</summary>
+    public void PlusArcadeFriend()
     {
-        _cool += 1;
+        _arcadefriend += 1;
     }
+
+    /// <summary>国語を+1</summary>
+    public void PlusNationa()
+    {
+        _national += 1;
+    }
+
+    /// <summary>数学を+1</summary>
+    public void PlusMath()
+    {
+        _math += 1;
+    }
+
+    /// <summary>科学を+1</summary>
+    public void PlusScience()
+    {
+        _science += 1;
+    }
+
+    /// <summary>社会を+1</summary>
+    public void PlusHistory()
+    {
+        _history += 1;
+    }
+
+    /// <summary>クレイジーを+1</summary>
     public void PlusCrazy()
     {
         _crazy += 1;
-    }
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log(Love + "," + Smart + "," + Cute + "," + Cool);
-        }
     }
 }
