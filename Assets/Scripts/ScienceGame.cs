@@ -39,10 +39,10 @@ public class ScienceGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "H","C","N","O","Na","Mg", "カルシウム", "チタン","Fe","銀","Pt","金","Hg",};
+    string[] question = { "H","C","N","O","Na","Mg","Ca","Ti","Fe","Ag","Pt","Au","Hg",};
 
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム", "Ca", "Ti","鉄","Ag","白金", "Au", "水銀",};
+    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム","カルシウム","チタン","鉄","銀","白金","金","水銀",};
 
 
     [SerializeField]
@@ -142,7 +142,7 @@ public class ScienceGame : MonoBehaviour
                     _statusManager.PlusScience();
                 }
                 break;
-            case "ca":
+            case "Ca":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -150,7 +150,7 @@ public class ScienceGame : MonoBehaviour
                     _statusManager.PlusScience();
                 }
                 break;
-            case "チタン":
+            case "Ti":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -166,7 +166,7 @@ public class ScienceGame : MonoBehaviour
                     _statusManager.PlusScience();
                 }
                 break;
-            case "銀":
+            case "Ag":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
@@ -182,7 +182,7 @@ public class ScienceGame : MonoBehaviour
                     _statusManager.PlusScience();
                 }
                 break;
-            case "金":                
+            case "Au":                
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();

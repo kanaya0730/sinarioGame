@@ -20,18 +20,23 @@ public class StatusManager : MonoBehaviour
 
     /// <summary>冬馬の好感度</summary>
     [SerializeField]
-    [Header("好感度")]
+    [Header("冬馬の好感度")]
     int _boyfriend = 0;
 
     /// <summary>凜の好感度</summary>
     [SerializeField]
-    [Header("好感度")]
+    [Header("凜の好感度")]
     int _girlsfriend = 0;
 
     /// <summary>晶の好感度</summary>
     [SerializeField]
-    [Header("好感度")]
+    [Header("晶の好感度")]
     int _arcadefriend = 0;
+
+    /// <summary>神の好感度</summary>
+    [SerializeField]
+    [Header("クレイジー")]
+    int _crazy = 0;
 
     /// <summary>国語の合計正解数</summary>
     [SerializeField]
@@ -53,11 +58,6 @@ public class StatusManager : MonoBehaviour
     [Header("歴史")]
     int _history = 0;
 
-    /// <summary>クレイジー</summary>
-    [SerializeField]
-    [Header("クレイジー")]
-    int _crazy = 0;
-
     /// <summary>ビルド時に呼ばれる</summary>
     private void Awake()
     {
@@ -75,7 +75,7 @@ public class StatusManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("現在のステータス：" + "冬馬の好感度" + _boyfriend + "凜の好感度" + _girlsfriend + "晶の好感度" + _arcadefriend);
+            Debug.Log("現在のステータス：" + "冬馬の好感度" + _boyfriend + "凜の好感度" + _girlsfriend + "晶の好感度" + _arcadefriend + "神の好感度" + _crazy);
             Debug.Log("国語" + _national + "数学" + _math + "科学" + _science + "社会" + _history);
         }
     }
@@ -83,19 +83,25 @@ public class StatusManager : MonoBehaviour
     /// <summary>t冬馬の好感度を+1</summary>
     public void PlusBoyFriend()
     {
-        _boyfriend += 1;
+        _boyfriend += 2;
     }
 
     /// <summary>凜の好感度を+1</summary>
     public void PlusGirlsFriend()
     {
-        _girlsfriend += 1;
+        _girlsfriend += 2;
     }
 
     /// <summary>晶の好感度を+1</summary>
     public void PlusArcadeFriend()
     {
-        _arcadefriend += 1;
+        _arcadefriend += 2;
+    }
+
+    /// <summary>神の好感度を+1</summary>
+    public void PlusCrazy()
+    {
+        _crazy += 1;
     }
 
     /// <summary>国語を+1</summary>
@@ -120,11 +126,5 @@ public class StatusManager : MonoBehaviour
     public void PlusHistory()
     {
         _history += 1;
-    }
-
-    /// <summary>クレイジーを+1</summary>
-    public void PlusCrazy()
-    {
-        _crazy += 1;
     }
 }

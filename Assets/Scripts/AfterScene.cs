@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakScene : MonoBehaviour
+public class AfterScene : MonoBehaviour
 {
     ScenarioManager _scenarioManager;
-    private void Start() => _scenarioManager.BreakScene();
+    private void Start() => _scenarioManager.AfterSchoolText();
     private void Awake() => _scenarioManager = FindObjectOfType<ScenarioManager>();
 }

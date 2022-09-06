@@ -5,10 +5,26 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>シナリオ管理</summary>
+/// <summary>シナリオ関連の管理マネージャー</summary>
 public class ScenarioManager : MonoBehaviour
 {
     StatusManager _statusManager;
+
+    public List<string[]> CsvData => _csvData;
+
+    public int TextID => _textID;
+
+    [SerializeField]
+    [Header("分岐")]
+    Text[] _branch;
+
+    [SerializeField]
+    [Header("選択ボタン")]
+    Button[] _button;
+
+    [SerializeField]
+    [Header("背景")]
+    Image[] _backImage;
 
     [SerializeField]
     [Header("シナリオデータ")]
@@ -18,39 +34,30 @@ public class ScenarioManager : MonoBehaviour
     [Header("UITextスクリプト")]
     UIText _uitext;
 
-    [SerializeField]
-    [Header("分岐")]
-    Text[] _branch;
-
+    /// <summary>[0] = 悠希（男）,[1] = 結城（女）,[2] = 冬馬,[3] = 凜,[4] = 神,[5] = 執事,[6] = メイド,[7] = 晶</summary>
     [SerializeField]
     [Header("登場キャラクター")]
     Image[] _character;
-
-    [SerializeField]
-    [Header("背景")]
-    Image[] _backGraund;
 
     /// <summary>現在のイベント</summary>
     [SerializeField]
     [Header("現在のイベント")]
     Text _eventText;
 
-    [SerializeField]
-    [Header("選択ボタン")]
-    Button[] _button;
-
     List<string[]> _csvData = new List<string[]>();//CSVデータの保存場所
 
     int _textID = 1;
 
-    bool _branchTime;//条件分岐の確認
+    bool _eventTime = false;//条件分岐の確認
 
     string _eventName;//現在のイベント
+
+    public static ScenarioManager instance = null;
 
     void Start()
     {
         _statusManager = FindObjectOfType<StatusManager>();
-        //_textFail = Resources.Load(_fileName) as TextAsset;
+
         StringReader reader = new StringReader(_textFail.text);
 
         while (reader.Peek() != -1)
@@ -61,9 +68,9 @@ public class ScenarioManager : MonoBehaviour
 
         _eventText.text = "～オープニング～";
         Buttonfalse();
-        TextReset();
         StartCoroutine(Cotext());
     }
+
     /// <summary>クリックでテキストを一気に表示</summary>
     IEnumerator Skip()
     {
@@ -76,137 +83,204 @@ public class ScenarioManager : MonoBehaviour
         _uitext.DrawText(_csvData[_textID][1], _csvData[_textID][2]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
-        TextCheck();
-    }
-    public void Buttonfalse()
-    {
-        for (int i = 0; i < _button.Length; i++) //ボタンテキストの消去
-        {
-            _button[i].gameObject.SetActive(false);
-        }
-    }
-    public void TextReset()
-    {
-        for (int i = 0; i < _branch.Length; i++) //ボタンテキストの消去
-        {
-            _branch[i].text = "";
-        }
+        EventCheck();
+
+        yield return new WaitForSeconds(4);
     }
     void Update()
     {
         switch(_csvData[_textID][0])
         {
-            case "悠希(ゆうき)":
+            case "0"://悠希（男）
                 _character[0].gameObject.SetActive(true);
                 break;
-            case "悠希":
+
+            case "1"://結城（女）
                 _character[1].gameObject.SetActive(true);
                 break;
-            case "冬馬":
+
+            case "2"://冬馬
                 _character[2].gameObject.SetActive(true);
                 break;
-            case "凜":
+
+            case "3"://凜
                 _character[3].gameObject.SetActive(true);
                 break;
+
+            case "4"://神
+                _character[4].gameObject.SetActive(true);
+                break;
+
+            case "5"://執事
+                _character[5].gameObject.SetActive(true);
+                break;
+
+            case "6"://メイド
+                _character[6].gameObject.SetActive(true);
+                break;
+
+            case "7"://晶
+                _character[7].gameObject.SetActive(true);
+                break;
         }
-
-        switch (_textID)
+        
+        switch (_csvData[_textID][3])
         {
-            case 1:
-                _backGraund[0].gameObject.SetActive(true);
+            case "学校（裏）":
+                _backImage[0].gameObject.SetActive(true);
                 break;
 
-            case 5:
-                _branchTime = true;
-                _eventName = "Branch1";
+            case "学校（門）":
+                _backImage[1].gameObject.SetActive(true);
                 break;
 
-            case 17:
-                _backGraund[0].gameObject.SetActive(false);
-                _backGraund[3].gameObject.SetActive(true);
-                for (int i = 0; i < 4; i++)
-                {
-                    _character[i].gameObject.SetActive(false);
-                }
+            case "学校（昇降口）":
+                _backImage[2].gameObject.SetActive(true);
                 break;
 
-            case 18:
-                _backGraund[3].gameObject.SetActive(false);
-                _backGraund[4].gameObject.SetActive(true);
+            case "学校（教室）":
+                _backImage[3].gameObject.SetActive(true);
                 break;
 
-            case 22:
-                _backGraund[4].gameObject.SetActive(false);
-                _eventText.text = "～日常？～";
-                _backGraund[1].gameObject.SetActive(true);
+            case "学校（廊下）":
+                _backImage[4].gameObject.SetActive(true);
                 break;
 
-            case 45:
-                _backGraund[1].gameObject.SetActive(false);
-                _backGraund[7].gameObject.SetActive(true);
+            case "学校（踊り場）":
+                _backImage[5].gameObject.SetActive(true);
                 break;
 
-            case 46:
-                _backGraund[9].gameObject.SetActive(true);
+            case "通学路（朝）":
+                _backImage[6].gameObject.SetActive(true);
                 break;
 
-            case 49:
-                _backGraund[7].gameObject.SetActive(false);
-                _backGraund[9].gameObject.SetActive(false);
-                _backGraund[8].gameObject.SetActive(true);
-                //チャイム音
+            case "通学路（夕）":
+                _backImage[7].gameObject.SetActive(true);
                 break;
 
-            case 53:
-                //ミニゲーム
-                _branchTime = true;
+            case "通学路（夜）":
+                _backImage[8].gameObject.SetActive(true);
+                break;
+
+            case "女の子の部屋（朝）":
+                _backImage[9].gameObject.SetActive(true);
+                break;
+            case "女の子の部屋（夕）":
+                _backImage[10].gameObject.SetActive(true);
+                break;
+
+            case "女の子の部屋（夜）":
+                _backImage[11].gameObject.SetActive(true);
+                break;
+
+            case "男の子の部屋":
+                _backImage[12].gameObject.SetActive(true);
+                break;
+
+            case "夜空":
+                _backImage[13].gameObject.SetActive(true);
+                break;
+        }
+        switch (_textID += 1)
+        {
+            case 59:
                 SceneManager.LoadScene("MathScene");
                 break;
-
-            case 54:
-                _backGraund[9].gameObject.SetActive(true);
-                break;
-
-            case 65:
-                _branchTime = true;
-                SceneManager.LoadScene("NationalScene");
-                break;
-
-            case 66:
-                _eventText.text = "～放課後～";
-                break;
-            case 72:
-                for (int i = 0; i < 4; i++)
-                {
-                    _character[i].gameObject.SetActive(false);
-                }
-                break;
         }
+
     }
 
     /// <summary>イベントフラグが立っているか確認</summary>
-    public void TextCheck()
+    public void EventCheck()
     {
-        if(_branchTime == false)
+        if(_eventTime == false)//イベントフラグが立っていない
         {
             StartCoroutine(Cotext()); //繰り返す
         }
-        else
+
+        else//イベントフラグが立っている
         {
-            switch (_eventName)
+            switch (_csvData[_textID][4])
             {
-                case "Branch1":
-                    _button[0].gameObject.SetActive(true);
-                    _button[1].gameObject.SetActive(true);
-                    _button[2].gameObject.SetActive(true);
-                    _branch[0].text = _csvData[1][3];
-                    _branch[1].text = _csvData[2][3];
-                    _branch[2].text = _csvData[3][3];
+                case "1":
+                    for(int i = 0; i > _branch.Length; i++)
+                    {
+                        _branch[i].text = _csvData[i += 1][6];
+                        _button[i].gameObject.SetActive(true);
+                    }
+                    break;
+
+                case "2":
+                    if(_statusManager.Math >= 20)
+                    {
+                        _textID = 58;
+                        MathText();
+                    }
+
+                    if(_statusManager.Math >= 11 && _statusManager.Math <= 19)
+                    {
+                        _textID = 61;
+                        MathText();
+                    }
+                    if(_statusManager.Math >= 5 && _statusManager.Math <= 10)
+                    {
+                        _textID = 64;
+                        MathText();
+                    }
+                    break;
+                case "3":
+                    if (_statusManager.National >= 20)
+                    {
+                        _textID = 58;
+                        NationalText();
+                    }
+
+                    if (_statusManager.National >= 11 && _statusManager.National <= 19)
+                    {
+                        _textID = 61;
+                        NationalText();
+                    }
+                    if (_statusManager.National >= 5 && _statusManager.National <= 10)
+                    {
+                        _textID = 64;
+                        NationalText();
+                    }
                     break;
             }
         }
     }
+
+    /// <summary>ボタンUIを非表示</summary>
+    public void Buttonfalse()
+    {
+        for (int i = 0; i < _button.Length; i++)
+        {
+            _button[i].gameObject.SetActive(false);
+        }
+    }
+
     /// <summary>ボタンクリック</summary>
+    public void ButtonClick()
+    {
+        _eventTime = false;
+        Buttonfalse();
+        StartCoroutine("Cotext");
+    }
+
+    /// <summary>休み時間のストーリーから</summary>
+    public void BreakScene()
+    {
+        _textID = 58;
+        _eventTime = true;
+    }
+
+    /// <summary>放課後のストーリーから</summary>
+    public void AfterSchoolText()
+    {
+        _textID = 64;
+        _eventTime = true;
+    }
+
     public void ButtonA()
     {
         _statusManager.PlusGirlsFriend();
@@ -231,27 +305,33 @@ public class ScenarioManager : MonoBehaviour
         ButtonClick();
     }
 
-    public void ButtonClick()
+    IEnumerator MathText()
     {
-        _branchTime = false;
-        TextReset();
-        Buttonfalse();
-        StartCoroutine("Cotext");
+        _uitext.DrawText(_csvData[_textID][6], _csvData[_textID][7]); //(名前,セリフ)
+        yield return StartCoroutine(Skip());
+        _textID++; //次の行へ
+
+        if(_textID == 60 || _textID == 63 || _textID == 66)
+        {
+            _textID = 59;
+            StartCoroutine(Cotext());
+        }
+
+        StartCoroutine(MathText());
+    }
+    IEnumerator NationalText()
+    {
+        _uitext.DrawText(_csvData[_textID][6], _csvData[_textID][7]); //(名前,セリフ)
+        yield return StartCoroutine(Skip());
+        _textID++; //次の行へ
+
+        if (_textID == 60 || _textID == 63 || _textID == 66)
+        {
+            _textID = 65;
+            StartCoroutine(Cotext());
+        }
+
+        StartCoroutine(NationalText());
     }
 
-    /// <summary>休み時間のストーリーから</summary>
-    public void BreakText()
-    {
-        _textID = 54;
-        _branchTime = false;
-        StartCoroutine("Cotext");
-    }
-
-    /// <summary>放課後のストーリーから</summary>
-    public void AfterSchoolText()
-    {
-        _textID = 66;
-        _branchTime = false;
-        StartCoroutine("Cotext");
-    }
 }

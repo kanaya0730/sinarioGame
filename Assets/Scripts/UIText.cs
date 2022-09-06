@@ -49,17 +49,20 @@ public class UIText : MonoBehaviour
                 break;
         }
     }
+
     /// <summary>クリックで次のページを表示させる</summary>
     public bool IsClicked()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) return true;
         return false;
     }
+
     public void DrawText(string name, string text)
     {
         nameText.text = name;
         StartCoroutine(CoDrawText(text));
     }
+
     /// <summary>テキストがヌルヌル出てくるためのコルーチン</summary>
     IEnumerator CoDrawText(string text)
     {

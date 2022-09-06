@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>国語のテスト</summary>
 public class NationalGame : MonoBehaviour
@@ -84,6 +85,8 @@ public class NationalGame : MonoBehaviour
                 _timeLimit = 0;
                 answer = "お疲れ様です。";
                 inputField.text = "お疲れ様です。";
+
+                SceneManager.LoadScene("ThirdScene");
             }
             else
             {
