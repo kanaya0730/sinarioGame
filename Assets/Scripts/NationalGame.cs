@@ -76,7 +76,7 @@ public class NationalGame : MonoBehaviour
 
         _questionText.text = question[_iD];
 
-        _timer.text = _timeLimit.ToString("f0");
+        _timer.text = _timeLimit.ToString("f1");
 
         if (_play == true)
         {

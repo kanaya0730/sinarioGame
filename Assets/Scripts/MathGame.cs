@@ -35,9 +35,13 @@ public class MathGame : MonoBehaviour
     [SerializeField]
     [Header("現在の日付")]
     Text _dayText;
+
     string answer;
+
     string question;
+
     int _clearNum;
+
     int sum;
 
     [SerializeField]
@@ -48,23 +52,28 @@ public class MathGame : MonoBehaviour
 
     int _numID;
 
-    bool _play;
+    bool _play = false;
+
     System.DateTime dt;
     void Start()
     {
-        _play = false;
         _answerText.text = "?";
         dt = System.DateTime.Now;
+
         _statusManager = FindObjectOfType<StatusManager>();
     }
 
     void Update()
     {
         _dayText.text = "日付" + dt.Year.ToString() + "年" + dt.Month.ToString() + "月" + dt.Day.ToString() + "日";
+
         _questionText.text = question;
+
         _answerText.text = answer;
+
         _resultText.text = _clearNum.ToString();
-        _timer.text = _timeLimit.ToString("f0");
+
+        _timer.text = _timeLimit.ToString("f1");
 
         if(_play == true)
         {
@@ -85,7 +94,7 @@ public class MathGame : MonoBehaviour
         {
             Math();
             _clearNum += 1;
-            _statusManager.PlusNationa();
+            _statusManager.PlusMath();
         }
     }
     public void GetInputplayerName()

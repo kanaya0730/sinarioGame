@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>国語のテスト</summary>
-public class ScienceGame : MonoBehaviour
+public class HistoryGame : MonoBehaviour
 {
     StatusManager _statusManager;
 
@@ -18,7 +19,7 @@ public class ScienceGame : MonoBehaviour
     Text _answerText;
 
     [SerializeField]
-    Text _questionText;
+    Image _questionImage;
 
     [SerializeField]
     Text _resultText;
@@ -39,11 +40,12 @@ public class ScienceGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "H","C","N","O","Na","Mg","Ca","Ti","Fe","Ag","Pt","Au","Hg",};
+    [SerializeField]
+    [Header("問題画像")]
+    Image[] question;
 
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム","カルシウム","チタン","鉄","銀","白金","金","水銀",};
-
+    string[] _clearText = { "織田信長", "明智光秀","豊臣秀吉","真田幸村", "武田信玄", "毛利元就", "今川義元", "伊達政宗","徳川家康","上杉謙信"};
 
     [SerializeField]
     [Header("Panel")]
@@ -61,7 +63,7 @@ public class ScienceGame : MonoBehaviour
         _play = false;
         _answerText.text = "?";
         dt = System.DateTime.Now;
-       Science();
+        National();
 
         _statusManager = FindObjectOfType<StatusManager>();
     }
@@ -74,7 +76,7 @@ public class ScienceGame : MonoBehaviour
 
         _resultText.text = _clearNum.ToString();
 
-        _questionText.text = question[_iD];
+        _questionImage = question[_iD];
 
         _timer.text = _timeLimit.ToString("f1");
 
@@ -85,6 +87,8 @@ public class ScienceGame : MonoBehaviour
                 _timeLimit = 0;
                 answer = "お疲れ様です。";
                 inputField.text = "お疲れ様です。";
+
+                SceneManager.LoadScene("ThirdScene");
             }
             else
             {
@@ -92,125 +96,124 @@ public class ScienceGame : MonoBehaviour
             }
         }
 
-        switch (question[_iD])
+        switch (_clearText[_iD])
         {
-            case "H":
+            case "織田信長":
+
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "C":
+            case "暗黒":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "N":
+            case "終焉":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "O":
+            case "幻想":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Na":
+            case "刹那":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Mg":
+            case "虚空":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Ca":
+            case "月蝕":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Ti":
+            case "煉獄":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Fe":
+            case "混沌":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Ag":
+            case "深淵":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Pt":
+            case "漆黒":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Au":                
+            case "死線":                
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
-            case "Hg":
+            case "殲滅":
                 if (_clearText[_iD] == _answerText.text)
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusNationa();
                 }
                 break;
         }
     }
 
-    /// <summary>InputFileldの入力</summary>
     public void GetInputplayerName()
     {
         answer = inputField.text; //InputFieldからテキスト情報を取得する
         inputField.text = "";//入力フォームのテキストを空にする
         Debug.Log(answer);
     }
-
     /// <summary>ランダムに出力</summary>
-    public void Science()
+    public void National()
     {
         _iD = Random.Range(1,13);
     }
@@ -219,7 +222,7 @@ public class ScienceGame : MonoBehaviour
     public void Next()
     {
         _answerText.text = "";
-        Science();
+        National();
     }
     /// <summary>ゲームスタート</summary>
     public void Play()

@@ -84,13 +84,18 @@ public class ScenarioManager : MonoBehaviour
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
         EventCheck();
-
-        yield return new WaitForSeconds(4);
     }
     void Update()
     {
         switch(_csvData[_textID][0])
         {
+            case "100":
+                for (int i = 0; i < _character.Length; i++)
+                {
+                    _character[i].gameObject.SetActive(false);
+                }
+                break;
+
             case "0"://悠希（男）
                 _character[0].gameObject.SetActive(true);
                 break;
@@ -127,63 +132,86 @@ public class ScenarioManager : MonoBehaviour
         switch (_csvData[_textID][3])
         {
             case "学校（裏）":
+                BackImagefalse();
                 _backImage[0].gameObject.SetActive(true);
                 break;
 
             case "学校（門）":
+                BackImagefalse();
                 _backImage[1].gameObject.SetActive(true);
                 break;
 
             case "学校（昇降口）":
+                BackImagefalse();
                 _backImage[2].gameObject.SetActive(true);
                 break;
 
             case "学校（教室）":
+                BackImagefalse();
                 _backImage[3].gameObject.SetActive(true);
                 break;
 
             case "学校（廊下）":
+                BackImagefalse();
                 _backImage[4].gameObject.SetActive(true);
                 break;
 
             case "学校（踊り場）":
+                BackImagefalse();
                 _backImage[5].gameObject.SetActive(true);
                 break;
 
             case "通学路（朝）":
+                BackImagefalse();
                 _backImage[6].gameObject.SetActive(true);
                 break;
 
             case "通学路（夕）":
+                BackImagefalse();
                 _backImage[7].gameObject.SetActive(true);
                 break;
 
             case "通学路（夜）":
+                BackImagefalse();
                 _backImage[8].gameObject.SetActive(true);
                 break;
 
             case "女の子の部屋（朝）":
+                BackImagefalse();
                 _backImage[9].gameObject.SetActive(true);
                 break;
             case "女の子の部屋（夕）":
+                BackImagefalse();
                 _backImage[10].gameObject.SetActive(true);
                 break;
 
             case "女の子の部屋（夜）":
+                BackImagefalse();
                 _backImage[11].gameObject.SetActive(true);
                 break;
 
             case "男の子の部屋":
+                BackImagefalse();
                 _backImage[12].gameObject.SetActive(true);
                 break;
 
             case "夜空":
+                BackImagefalse();
                 _backImage[13].gameObject.SetActive(true);
                 break;
         }
-        switch (_textID += 1)
+
+        switch(_csvData[_textID][4])
         {
-            case 59:
+            case "TRUE":
+                _eventTime = true;
+                EventCheck();
+                break;
+        }
+
+        switch (_textID)
+        {
+            case 58:
                 SceneManager.LoadScene("MathScene");
                 break;
         }
@@ -200,12 +228,12 @@ public class ScenarioManager : MonoBehaviour
 
         else//イベントフラグが立っている
         {
-            switch (_csvData[_textID][4])
+            switch (_csvData[_textID][5])
             {
-                case "1":
-                    for(int i = 0; i > _branch.Length; i++)
+                case "分岐1":
+                    for(int i = 0; i < _branch.Length; i++)
                     {
-                        _branch[i].text = _csvData[i += 1][6];
+                        _branch[i].text = _csvData[i + 1][8];
                         _button[i].gameObject.SetActive(true);
                     }
                     break;
@@ -228,6 +256,7 @@ public class ScenarioManager : MonoBehaviour
                         MathText();
                     }
                     break;
+
                 case "3":
                     if (_statusManager.National >= 20)
                     {
@@ -259,12 +288,20 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
+    public void BackImagefalse()
+    {
+        for (int i = 0; i < _backImage.Length; i++)
+        {
+            _backImage[i].gameObject.SetActive(false);
+        }
+    }
+
     /// <summary>ボタンクリック</summary>
     public void ButtonClick()
     {
         _eventTime = false;
         Buttonfalse();
-        StartCoroutine("Cotext");
+        StartCoroutine(Cotext());
     }
 
     /// <summary>休み時間のストーリーから</summary>
@@ -307,7 +344,7 @@ public class ScenarioManager : MonoBehaviour
 
     IEnumerator MathText()
     {
-        _uitext.DrawText(_csvData[_textID][6], _csvData[_textID][7]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][7], _csvData[_textID][8]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 
@@ -321,7 +358,7 @@ public class ScenarioManager : MonoBehaviour
     }
     IEnumerator NationalText()
     {
-        _uitext.DrawText(_csvData[_textID][6], _csvData[_textID][7]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][7], _csvData[_textID][8]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 

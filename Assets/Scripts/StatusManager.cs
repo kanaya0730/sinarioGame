@@ -4,59 +4,59 @@ using UnityEngine;
 /// <summary>隠しステータス管理</summary>
 public class StatusManager : MonoBehaviour
 {
-    public int National => _national;
+    public float National => _national;
 
-    public int Math => _math;
+    public float Math => _math;
 
-    public int Scienece => _science;
+    public float Scienece => _science;
 
-    public int Boyfriend => _boyfriend;
+    public float Boyfriend => _boyfriend;
 
-    public int Girlsfriend　=> _girlsfriend;
+    public float Girlsfriend　=> _girlsfriend;
 
-    public int Arcadefriend => _arcadefriend;
+    public float Arcadefriend => _arcadefriend;
 
     public static StatusManager instance = null;
 
     /// <summary>冬馬の好感度</summary>
     [SerializeField]
     [Header("冬馬の好感度")]
-    int _boyfriend = 0;
+    float _boyfriend = 0f;
 
     /// <summary>凜の好感度</summary>
     [SerializeField]
     [Header("凜の好感度")]
-    int _girlsfriend = 0;
+    float _girlsfriend = 0f;
 
     /// <summary>晶の好感度</summary>
     [SerializeField]
     [Header("晶の好感度")]
-    int _arcadefriend = 0;
+    float _arcadefriend = 0f;
 
     /// <summary>神の好感度</summary>
     [SerializeField]
-    [Header("クレイジー")]
-    int _crazy = 0;
+    [Header("神の好感度")]
+    float _crazy = 0f;
 
     /// <summary>国語の合計正解数</summary>
     [SerializeField]
     [Header("国語")]
-    int _national = 0;
+    float _national = 0f;
 
     /// <summary>数学の合計正解数</summary>
     [SerializeField]
     [Header("数学")]
-    int _math = 0;
+    float _math = 0f;
 
     /// <summary>科学の合計正解数</summary>
     [SerializeField]
     [Header("科学")]
-    int _science = 0;
+    float _science = 0f;
 
     /// <summary>社会の合計正解数</summary>
     [SerializeField]
     [Header("歴史")]
-    int _history = 0;
+    float _history = 0f;
 
     /// <summary>ビルド時に呼ばれる</summary>
     private void Awake()
@@ -101,7 +101,7 @@ public class StatusManager : MonoBehaviour
     /// <summary>神の好感度を+1</summary>
     public void PlusCrazy()
     {
-        _crazy += 1;
+        _crazy += 2;
     }
 
     /// <summary>国語を+1</summary>

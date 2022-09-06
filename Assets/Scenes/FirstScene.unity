@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 603773624}
   - component: {fileID: 603773623}
   m_Layer: 5
-  m_Name: ButtonB
+  m_Name: BranchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: ButtonB
+        m_MethodName: ButtonA
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   talkText: {fileID: 297207608}
   triangle: {fileID: 883382654}
   _playing: 0
-  textSpeed: 0.05
+  textSpeed: 0.08
 --- !u!114 &725433588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 1501637668}
   - component: {fileID: 1501637667}
   m_Layer: 5
-  m_Name: ButtonC
+  m_Name: BranchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2213,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: ButtonC
+        m_MethodName: ButtonD
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2817,7 +2817,7 @@ GameObject:
   - component: {fileID: 1700933815}
   - component: {fileID: 1700933814}
   m_Layer: 5
-  m_Name: ButtonA
+  m_Name: BranchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2887,7 +2887,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725433588}
-        m_MethodName: ButtonA
+        m_MethodName: ButtonB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
