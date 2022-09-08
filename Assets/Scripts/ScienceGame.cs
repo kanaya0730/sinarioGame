@@ -99,7 +99,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "C":
@@ -107,7 +107,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "N":
@@ -115,7 +115,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "O":
@@ -123,7 +123,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Na":
@@ -131,7 +131,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Mg":
@@ -139,7 +139,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Ca":
@@ -147,7 +147,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Ti":
@@ -155,7 +155,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Fe":
@@ -163,7 +163,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Ag":
@@ -171,7 +171,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Pt":
@@ -179,7 +179,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Au":                
@@ -187,7 +187,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
             case "Hg":
@@ -195,7 +195,7 @@ public class ScienceGame : MonoBehaviour
                 {
                     Next();
                     _clearNum += 1;
-                    _statusManager.PlusScience();
+                    _statusManager.PlusScience(2);
                 }
                 break;
         }

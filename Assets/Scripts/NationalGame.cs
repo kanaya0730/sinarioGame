@@ -10,6 +10,10 @@ public class NationalGame : MonoBehaviour
     StatusManager _statusManager;
 
     [SerializeField]
+    [Header("国語の授業データ")]
+    QuestionData _questionData;
+
+    [SerializeField]
     GameObject inputFieldGameObject;
 
     [SerializeField]
@@ -40,9 +44,10 @@ public class NationalGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "究極","暗黒","終焉","幻想","刹那","虚空","月蝕", "煉獄","混沌","深淵","漆黒","死線","殲滅",};
+    string　_question;
+
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"きゅうきょく","あんこく","しゅうえん","げんそう","せつな","こくう","げっしょく","れんごく","こんとん","しんえん","しっこく","しせん","せんめつ",};
+    string _questionAnswer;
 
 
     [SerializeField]
@@ -63,6 +68,24 @@ public class NationalGame : MonoBehaviour
         dt = System.DateTime.Now;
         National();
 
+        Debug.Log(_questionData.Subject);
+
+        _question = _questionData.QuestionDatas[_iD].Question;
+        _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
+
+        Debug.Log(_question);
+        Debug.Log(_questionAnswer);
+
+        /*for (int i = 0; i < 12; i++)
+        {
+            //_question[i] = _questionData.QuestionDatas[i].Question;
+            //_questionAnswer[i] = _questionData.QuestionDatas[i].Answer;
+
+            _question = _questionData.QuestionDatas[i].Question;
+            _questionAnswer = _questionData.QuestionDatas[i].Answer;
+
+        }*/
+
         _statusManager = FindObjectOfType<StatusManager>();
     }
 
@@ -74,7 +97,7 @@ public class NationalGame : MonoBehaviour
 
         _resultText.text = _clearNum.ToString();
 
-        _questionText.text = question[_iD];
+        _questionText.text = _question;
 
         _timer.text = _timeLimit.ToString("f1");
 
@@ -94,116 +117,104 @@ public class NationalGame : MonoBehaviour
             }
         }
 
-        switch (question[_iD])
+        switch (_question)
         {
             case "究極":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "暗黒":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "終焉":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "幻想":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "刹那":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "虚空":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "月蝕":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "煉獄":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "混沌":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "深淵":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "漆黒":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "死線":                
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
             case "殲滅":
-                if (_clearText[_iD] == _answerText.text)
+                if (_questionAnswer == _answerText.text)
                 {
                     Next();
-                    _clearNum += 1;
-                    _statusManager.PlusNationa();
+                    _statusManager.PlusNationa(2);
                 }
                 break;
         }
     }
 
-    public void GetInputplayerName()
+    public void GetInputPlayerName()
     {
         answer = inputField.text; //InputFieldからテキスト情報を取得する
         inputField.text = "";//入力フォームのテキストを空にする
@@ -213,12 +224,16 @@ public class NationalGame : MonoBehaviour
     public void National()
     {
         _iD = Random.Range(1,13);
+
+        _question = _questionData.QuestionDatas[_iD].Question;
+        _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
     }
 
     /// <summary>次の問題へ</summary>
     public void Next()
     {
         _answerText.text = "";
+        _clearNum++;
         National();
     }
     /// <summary>ゲームスタート</summary>

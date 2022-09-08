@@ -39,22 +39,13 @@ public class ScenarioManager : MonoBehaviour
     [Header("登場キャラクター")]
     Image[] _character;
 
-    /// <summary>現在のイベント</summary>
-    [SerializeField]
-    [Header("現在のイベント")]
-    Text _eventText;
-
     List<string[]> _csvData = new List<string[]>();//CSVデータの保存場所
 
     int _textID = 1;
 
     bool _eventTime = false;//条件分岐の確認
 
-    string _eventName;//現在のイベント
-
-    public static ScenarioManager instance = null;
-
-    void Start()
+    public void LoadCSV()
     {
         _statusManager = FindObjectOfType<StatusManager>();
 
@@ -66,9 +57,9 @@ public class ScenarioManager : MonoBehaviour
             _csvData.Add(line.Split(','));
         }
 
-        _eventText.text = "～オープニング～";
+        //FirstText();
+
         Buttonfalse();
-        StartCoroutine(Cotext());
     }
 
     /// <summary>クリックでテキストを一気に表示</summary>
@@ -80,11 +71,16 @@ public class ScenarioManager : MonoBehaviour
 
     IEnumerator Cotext()
     {
+        Debug.Log("現在：" + _textID + "行");
+
         _uitext.DrawText(_csvData[_textID][1], _csvData[_textID][2]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
+
         _textID++; //次の行へ
+
         EventCheck();
     }
+
     void Update()
     {
         switch(_csvData[_textID][0])
@@ -209,10 +205,10 @@ public class ScenarioManager : MonoBehaviour
                 break;
         }
 
-        switch (_textID)
+        switch (_csvData[_textID][6])
         {
-            case 58:
-                SceneManager.LoadScene("MathScene");
+            case "MathScene":
+                SceneManager.LoadScene(_csvData[_textID][6]);
                 break;
         }
 
@@ -238,41 +234,44 @@ public class ScenarioManager : MonoBehaviour
                     }
                     break;
 
-                case "2":
+                case "分岐2":
+
+                    Debug.Log("000");
                     if(_statusManager.Math >= 20)
                     {
-                        _textID = 58;
-                        MathText();
+                        _textID = 59;
+                        StartCoroutine(MathText());
                     }
 
-                    if(_statusManager.Math >= 11 && _statusManager.Math <= 19)
+                    else if(_statusManager.Math >= 11 && _statusManager.Math <= 19)
                     {
-                        _textID = 61;
-                        MathText();
+                        _textID = 62;
+                        StartCoroutine(MathText());
                     }
-                    if(_statusManager.Math >= 5 && _statusManager.Math <= 10)
+
+                    else if(_statusManager.Math >= 0 && _statusManager.Math <= 10)
                     {
-                        _textID = 64;
-                        MathText();
+                        _textID = 65;
+                        StartCoroutine(MathText());
                     }
                     break;
 
-                case "3":
+                case "分岐3":
                     if (_statusManager.National >= 20)
                     {
-                        _textID = 58;
-                        NationalText();
+                        _textID = 59;
+                        StartCoroutine(NationalText());
                     }
 
                     if (_statusManager.National >= 11 && _statusManager.National <= 19)
                     {
-                        _textID = 61;
-                        NationalText();
+                        _textID = 62;
+                        StartCoroutine(NationalText());
                     }
                     if (_statusManager.National >= 5 && _statusManager.National <= 10)
                     {
-                        _textID = 64;
-                        NationalText();
+                        _textID = 65;
+                        StartCoroutine(NationalText());
                     }
                     break;
             }
@@ -307,38 +306,49 @@ public class ScenarioManager : MonoBehaviour
     /// <summary>休み時間のストーリーから</summary>
     public void BreakScene()
     {
-        _textID = 58;
+        LoadCSV();
+        _textID = 59;
         _eventTime = true;
+        StartCoroutine(Cotext());
     }
 
     /// <summary>放課後のストーリーから</summary>
     public void AfterSchoolText()
     {
-        _textID = 64;
+        LoadCSV();
+        _textID = 66;
         _eventTime = true;
+        StartCoroutine(Cotext());
+    }
+
+    /// <summary>最初のストーリーから</summary>
+    public void FirstText()
+    {
+        LoadCSV();
+        StartCoroutine(Cotext());
     }
 
     public void ButtonA()
     {
-        _statusManager.PlusGirlsFriend();
+        _statusManager.PlusGirlsFriend(2);
         ButtonClick();
     }
 
     public void ButtonB()
     {
-        _statusManager.PlusBoyFriend();
+        _statusManager.PlusBoyFriend(2);
         ButtonClick();
     }
 
     public void ButtonC()
     {
-        _statusManager.PlusArcadeFriend();
+        _statusManager.PlusArcadeFriend(2);
         ButtonClick();
     }
 
     public void ButtonD()
     {
-        _statusManager.PlusCrazy();
+        _statusManager.PlusCrazy(2);
         ButtonClick();
     }
 
@@ -348,27 +358,30 @@ public class ScenarioManager : MonoBehaviour
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 
-        if(_textID == 60 || _textID == 63 || _textID == 66)
+        if(_textID == 61 || _textID == 64 || _textID == 67)
         {
-            _textID = 59;
+            _textID = 60;
             StartCoroutine(Cotext());
         }
 
         StartCoroutine(MathText());
     }
+
     IEnumerator NationalText()
     {
         _uitext.DrawText(_csvData[_textID][7], _csvData[_textID][8]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 
-        if (_textID == 60 || _textID == 63 || _textID == 66)
+        if (_textID == 61 || _textID == 64 || _textID == 67)
         {
             _textID = 65;
             StartCoroutine(Cotext());
         }
-
-        StartCoroutine(NationalText());
+        else
+        {
+            StartCoroutine(NationalText());
+        }
     }
 
 }

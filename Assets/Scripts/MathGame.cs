@@ -82,6 +82,7 @@ public class MathGame : MonoBehaviour
                 _timeLimit = 0;
                 answer = "お疲れ様です。";
                 inputField.text = "00000000";
+
                 SceneManager.LoadScene("SecondScene");
             }
             else
@@ -94,7 +95,7 @@ public class MathGame : MonoBehaviour
         {
             Math();
             _clearNum += 1;
-            _statusManager.PlusMath();
+            _statusManager.PlusMath(1 + _numID);
         }
     }
     public void GetInputplayerName()

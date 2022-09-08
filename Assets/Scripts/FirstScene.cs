@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakScene : MonoBehaviour
+public class FirstScene : MonoBehaviour
 {
     ScenarioManager _scenarioManager;
 
     private void Awake()
     {
         _scenarioManager = FindObjectOfType<ScenarioManager>();
-        _scenarioManager.BreakScene();
+        _scenarioManager.FirstText();
     }
 }

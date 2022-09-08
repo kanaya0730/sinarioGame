@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>隠しステータス管理</summary>
 public class StatusManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class StatusManager : MonoBehaviour
 
     public float Arcadefriend => _arcadefriend;
 
-    public static StatusManager instance = null;
+    public static StatusManager instance = null;//シングルトンを使いましょう
 
     /// <summary>冬馬の好感度</summary>
     [SerializeField]
@@ -71,6 +72,7 @@ public class StatusManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -80,51 +82,51 @@ public class StatusManager : MonoBehaviour
         }
     }
 
-    /// <summary>t冬馬の好感度を+1</summary>
-    public void PlusBoyFriend()
+    /// <summary>t冬馬の好感度を+</summary>
+    public void PlusBoyFriend(int love)
     {
-        _boyfriend += 2;
+        _boyfriend += love;
     }
 
-    /// <summary>凜の好感度を+1</summary>
-    public void PlusGirlsFriend()
+    /// <summary>凜の好感度を+</summary>
+    public void PlusGirlsFriend(int love)
     {
-        _girlsfriend += 2;
+        _girlsfriend += love;
     }
 
-    /// <summary>晶の好感度を+1</summary>
-    public void PlusArcadeFriend()
+    /// <summary>晶の好感度を+</summary>
+    public void PlusArcadeFriend(int love)
     {
-        _arcadefriend += 2;
+        _arcadefriend += love;
     }
 
-    /// <summary>神の好感度を+1</summary>
-    public void PlusCrazy()
+    /// <summary>神の好感度を+</summary>
+    public void PlusCrazy(int love)
     {
-        _crazy += 2;
+        _crazy += love;
     }
 
-    /// <summary>国語を+1</summary>
-    public void PlusNationa()
+    /// <summary>国語を+</summary>
+    public void PlusNationa(int national)
     {
-        _national += 1;
+        _national += national;
     }
 
-    /// <summary>数学を+1</summary>
-    public void PlusMath()
+    /// <summary>数学を+</summary>
+    public void PlusMath(int math)
     {
-        _math += 1;
+        _math += math;
     }
 
-    /// <summary>科学を+1</summary>
-    public void PlusScience()
+    /// <summary>科学を+</summary>
+    public void PlusScience(int science)
     {
-        _science += 1;
+        _science += science;
     }
 
-    /// <summary>社会を+1</summary>
-    public void PlusHistory()
+    /// <summary>社会を+</summary>
+    public void PlusHistory(int history)
     {
-        _history += 1;
+        _history += history;
     }
 }

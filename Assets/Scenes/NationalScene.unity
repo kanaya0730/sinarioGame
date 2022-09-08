@@ -273,7 +273,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u4E94\u6642\u9593\u76EE\uFF1A\u6F22\u5B57\u30C6\u30B9\u30C8"
+  m_Text: "\u4E94\u6642\u9593\u76EE\uFF1A\u56FD\u8A9E\u306E\u6388\u696D"
 --- !u!222 &333854319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -864,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d37ce878934648afa09a383eccbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questionData: {fileID: 11400000, guid: 06a18def0699e6845a8661349cfdb257, type: 2}
   inputFieldGameObject: {fileID: 1867827504}
   inputField: {fileID: 1867827506}
   _answerText: {fileID: 872074229}
@@ -1423,7 +1424,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1103503290}
-        m_MethodName: GetInputplayerName
+        m_MethodName: GetInputPlayerName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
