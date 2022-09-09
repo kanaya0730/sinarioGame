@@ -5,6 +5,9 @@ using UnityEngine;
 public class AfterScene : MonoBehaviour
 {
     ScenarioManager _scenarioManager;
-    private void Start() => _scenarioManager.AfterSchoolText();
-    private void Awake() => _scenarioManager = FindObjectOfType<ScenarioManager>();
+    private void Awake()
+    {
+        _scenarioManager = FindObjectOfType<ScenarioManager>();
+        _scenarioManager.AfterSchoolText();
+    }
 }

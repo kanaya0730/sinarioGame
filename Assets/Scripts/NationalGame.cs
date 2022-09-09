@@ -76,16 +76,6 @@ public class NationalGame : MonoBehaviour
         Debug.Log(_question);
         Debug.Log(_questionAnswer);
 
-        /*for (int i = 0; i < 12; i++)
-        {
-            //_question[i] = _questionData.QuestionDatas[i].Question;
-            //_questionAnswer[i] = _questionData.QuestionDatas[i].Answer;
-
-            _question = _questionData.QuestionDatas[i].Question;
-            _questionAnswer = _questionData.QuestionDatas[i].Answer;
-
-        }*/
-
         _statusManager = FindObjectOfType<StatusManager>();
     }
 
@@ -117,100 +107,12 @@ public class NationalGame : MonoBehaviour
             }
         }
 
-        switch (_question)
+        if (_questionAnswer == _answerText.text) //正解したら次の問題へ
         {
-            case "究極":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "暗黒":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "終焉":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "幻想":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "刹那":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "虚空":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "月蝕":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "煉獄":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "混沌":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "深淵":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "漆黒":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "死線":                
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
-            case "殲滅":
-                if (_questionAnswer == _answerText.text)
-                {
-                    Next();
-                    _statusManager.PlusNationa(2);
-                }
-                break;
+            _answerText.text = "";
+            _clearNum++;
+            _statusManager.PlusNationa(2);
+            National();
         }
     }
 
@@ -229,13 +131,6 @@ public class NationalGame : MonoBehaviour
         _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
     }
 
-    /// <summary>次の問題へ</summary>
-    public void Next()
-    {
-        _answerText.text = "";
-        _clearNum++;
-        National();
-    }
     /// <summary>ゲームスタート</summary>
     public void Play()
     {

@@ -43,6 +43,8 @@ public class ScenarioManager : MonoBehaviour
 
     int _textID = 1;
 
+    int[] _lineID = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
     bool _eventTime = false;//条件分岐の確認
 
     public void LoadCSV()
@@ -56,8 +58,6 @@ public class ScenarioManager : MonoBehaviour
             string line = reader.ReadLine();
             _csvData.Add(line.Split(','));
         }
-
-        //FirstText();
 
         Buttonfalse();
     }
@@ -73,7 +73,7 @@ public class ScenarioManager : MonoBehaviour
     {
         Debug.Log("現在：" + _textID + "行");
 
-        _uitext.DrawText(_csvData[_textID][1], _csvData[_textID][2]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][_lineID[1]], _csvData[_textID][_lineID[2]]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
 
         _textID++; //次の行へ
@@ -83,49 +83,97 @@ public class ScenarioManager : MonoBehaviour
 
     void Update()
     {
-        switch(_csvData[_textID][0])
+        if (_eventTime == true)
         {
-            case "100":
-                for (int i = 0; i < _character.Length; i++)
-                {
-                    _character[i].gameObject.SetActive(false);
-                }
-                break;
+            switch (_csvData[_textID][_lineID[7]])
+            {
+                case "100":
+                    for (int i = 0; i < _character.Length; i++)
+                    {
+                        _character[i].gameObject.SetActive(false);
+                    }
+                    break;
 
-            case "0"://悠希（男）
-                _character[0].gameObject.SetActive(true);
-                break;
+                case "0"://悠希（男）
+                    _character[0].gameObject.SetActive(true);
+                    break;
 
-            case "1"://結城（女）
-                _character[1].gameObject.SetActive(true);
-                break;
+                case "1"://結城（女）
+                    _character[1].gameObject.SetActive(true);
+                    break;
 
-            case "2"://冬馬
-                _character[2].gameObject.SetActive(true);
-                break;
+                case "2"://冬馬
+                    _character[2].gameObject.SetActive(true);
+                    break;
 
-            case "3"://凜
-                _character[3].gameObject.SetActive(true);
-                break;
+                case "3"://凜
+                    _character[3].gameObject.SetActive(true);
+                    break;
 
-            case "4"://神
-                _character[4].gameObject.SetActive(true);
-                break;
+                case "4"://神
+                    _character[4].gameObject.SetActive(true);
+                    break;
 
-            case "5"://執事
-                _character[5].gameObject.SetActive(true);
-                break;
+                case "5"://執事
+                    _character[5].gameObject.SetActive(true);
+                    break;
 
-            case "6"://メイド
-                _character[6].gameObject.SetActive(true);
-                break;
+                case "6"://メイド
+                    _character[6].gameObject.SetActive(true);
+                    break;
 
-            case "7"://晶
-                _character[7].gameObject.SetActive(true);
-                break;
+                case "7"://晶
+                    _character[7].gameObject.SetActive(true);
+                    break;
+            }
+        }
+
+        else
+        {
+            switch (_csvData[_textID][_lineID[0]])
+            {
+                case "100":
+                    for (int i = 0; i < _character.Length; i++)
+                    {
+                        _character[i].gameObject.SetActive(false);
+                    }
+                    break;
+
+                case "0"://悠希（男）
+                    _character[0].gameObject.SetActive(true);
+                    break;
+
+                case "1"://結城（女）
+                    _character[1].gameObject.SetActive(true);
+                    break;
+
+                case "2"://冬馬
+                    _character[2].gameObject.SetActive(true);
+                    break;
+
+                case "3"://凜
+                    _character[3].gameObject.SetActive(true);
+                    break;
+
+                case "4"://神
+                    _character[4].gameObject.SetActive(true);
+                    break;
+
+                case "5"://執事
+                    _character[5].gameObject.SetActive(true);
+                    break;
+
+                case "6"://メイド
+                    _character[6].gameObject.SetActive(true);
+                    break;
+
+                case "7"://晶
+                    _character[7].gameObject.SetActive(true);
+                    break;
+            }
         }
         
-        switch (_csvData[_textID][3])
+        switch (_csvData[_textID][_lineID[3]])
         {
             case "学校（裏）":
                 BackImagefalse();
@@ -197,46 +245,50 @@ public class ScenarioManager : MonoBehaviour
                 break;
         }
 
-        switch(_csvData[_textID][4])
+        switch(_csvData[_textID][_lineID[4]])
         {
             case "TRUE":
                 _eventTime = true;
                 EventCheck();
                 break;
         }
-
-        switch (_csvData[_textID][6])
+        if(_eventTime == false)
         {
-            case "MathScene":
-                SceneManager.LoadScene(_csvData[_textID][6]);
-                break;
-        }
+            switch (_csvData[_textID][_lineID[6]])
+            {
+                case "MathScene":
+                    SceneManager.LoadScene("MathScene");
+                    break;
 
+                case "NationalScene":
+                    SceneManager.LoadScene("NationalScene");
+                    break;
+            }
+
+        }
     }
 
     /// <summary>イベントフラグが立っているか確認</summary>
     public void EventCheck()
     {
-        if(_eventTime == false)//イベントフラグが立っていない
+        if(_eventTime == false) //イベントフラグが立っていない
         {
             StartCoroutine(Cotext()); //繰り返す
         }
 
-        else//イベントフラグが立っている
+        else //イベントフラグが立っている
         {
-            switch (_csvData[_textID][5])
+            switch (_csvData[_textID][_lineID[5]])
             {
                 case "分岐1":
                     for(int i = 0; i < _branch.Length; i++)
                     {
-                        _branch[i].text = _csvData[i + 1][8];
+                        _branch[i].text = _csvData[i + 1][_lineID[9]];
                         _button[i].gameObject.SetActive(true);
                     }
                     break;
 
                 case "分岐2":
-
-                    Debug.Log("000");
                     if(_statusManager.Math >= 20)
                     {
                         _textID = 59;
@@ -309,7 +361,6 @@ public class ScenarioManager : MonoBehaviour
         LoadCSV();
         _textID = 59;
         _eventTime = true;
-        StartCoroutine(Cotext());
     }
 
     /// <summary>放課後のストーリーから</summary>
@@ -317,7 +368,6 @@ public class ScenarioManager : MonoBehaviour
     {
         LoadCSV();
         _textID = 66;
-        _eventTime = true;
         StartCoroutine(Cotext());
     }
 
@@ -354,30 +404,36 @@ public class ScenarioManager : MonoBehaviour
 
     IEnumerator MathText()
     {
-        _uitext.DrawText(_csvData[_textID][7], _csvData[_textID][8]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 
-        if(_textID == 61 || _textID == 64 || _textID == 67)
+        if(_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
         {
             _textID = 60;
+            _eventTime = false;
             StartCoroutine(Cotext());
         }
 
-        StartCoroutine(MathText());
+        else
+        {
+            StartCoroutine(MathText());
+        }
     }
 
     IEnumerator NationalText()
     {
-        _uitext.DrawText(_csvData[_textID][7], _csvData[_textID][8]); //(名前,セリフ)
+        _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
         yield return StartCoroutine(Skip());
         _textID++; //次の行へ
 
-        if (_textID == 61 || _textID == 64 || _textID == 67)
+        if (_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
         {
-            _textID = 65;
+            _textID = 66;
+            _eventTime = false;
             StartCoroutine(Cotext());
         }
+
         else
         {
             StartCoroutine(NationalText());

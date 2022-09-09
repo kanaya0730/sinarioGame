@@ -9,6 +9,10 @@ public class ScienceGame : MonoBehaviour
     StatusManager _statusManager;
 
     [SerializeField]
+    [Header("科学の授業データ")]
+    QuestionData _questionData;
+
+    [SerializeField]
     GameObject inputFieldGameObject;
 
     [SerializeField]
@@ -39,10 +43,10 @@ public class ScienceGame : MonoBehaviour
     string answer;
 
     /// <summary>問題内容</summary>
-    string[] question = { "H","C","N","O","Na","Mg","Ca","Ti","Fe","Ag","Pt","Au","Hg",};
+    string _question;
 
     /// <summary>問題の答え</summary>
-    string[] _clearText = {"水素","炭素","窒素","酸素","ナトリウム","マグネシウム","カルシウム","チタン","鉄","銀","白金","金","水銀",};
+    string _questionAnswer;
 
 
     [SerializeField]
@@ -63,6 +67,15 @@ public class ScienceGame : MonoBehaviour
         dt = System.DateTime.Now;
        Science();
 
+        Debug.Log(_questionData.Subject);
+
+        _question = _questionData.QuestionDatas[_iD].Question;
+        _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
+
+        Debug.Log(_question);
+        Debug.Log(_questionAnswer);
+
+
         _statusManager = FindObjectOfType<StatusManager>();
     }
 
@@ -74,7 +87,7 @@ public class ScienceGame : MonoBehaviour
 
         _resultText.text = _clearNum.ToString();
 
-        _questionText.text = question[_iD];
+        _questionText.text = _question;
 
         _timer.text = _timeLimit.ToString("f1");
 
@@ -92,112 +105,11 @@ public class ScienceGame : MonoBehaviour
             }
         }
 
-        switch (question[_iD])
+        if (_questionAnswer == _answerText.text)
         {
-            case "H":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "C":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "N":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "O":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Na":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Mg":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Ca":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Ti":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Fe":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Ag":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Pt":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Au":                
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
-            case "Hg":
-                if (_clearText[_iD] == _answerText.text)
-                {
-                    Next();
-                    _clearNum += 1;
-                    _statusManager.PlusScience(2);
-                }
-                break;
+            Next();
+            _clearNum++;
+            _statusManager.PlusScience(2);
         }
     }
 
@@ -213,6 +125,9 @@ public class ScienceGame : MonoBehaviour
     public void Science()
     {
         _iD = Random.Range(1,13);
+
+        _question = _questionData.QuestionDatas[_iD].Question;
+        _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
     }
 
     /// <summary>次の問題へ</summary>
@@ -221,6 +136,7 @@ public class ScienceGame : MonoBehaviour
         _answerText.text = "";
         Science();
     }
+
     /// <summary>ゲームスタート</summary>
     public void Play()
     {

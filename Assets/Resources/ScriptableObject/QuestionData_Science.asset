@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9157b9701ee705d458a83824653b3f14, type: 3}
+  m_Name: QuestionData_Science
+  m_EditorClassIdentifier: 
+  _subject: "\u79D1\u5B66"
+  _questionDatas:
+  - _question: H
+    _answer: "\u6C34\u7D20"
+  - _question: C
+    _answer: "\u70AD\u7D20"
+  - _question: N
+    _answer: "\u7A92\u7D20"
+  - _question: O
+    _answer: "\u9178\u7D20"
+  - _question: Na
+    _answer: "\u30CA\u30C8\u30EA\u30A6\u30E0"
+  - _question: Mg
+    _answer: "\u30DE\u30B0\u30CD\u30B7\u30A6\u30E0"
+  - _question: Ca
+    _answer: "\u30AB\u30EB\u30B7\u30A6\u30E0"
+  - _question: Ti
+    _answer: "\u30C1\u30BF\u30F3"
+  - _question: Fe
+    _answer: "\u9244"
+  - _question: Ag
+    _answer: "\u9280"
+  - _question: Pt
+    _answer: "\u767D\u91D1"
+  - _question: Au
+    _answer: "\u91D1"
+  - _question: Hg
+    _answer: "\u6C34\u9280"
