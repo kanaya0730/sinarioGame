@@ -291,18 +291,23 @@ public class ScenarioManager : MonoBehaviour
                 case "分岐2":
                     if(_statusManager.Math >= 20)
                     {
+                        _statusManager.PlusGirlsFriend(3);
+                        _statusManager.PlusBoyFriend(3);
+                        _statusManager.PlusArcadeFriend(3);
                         _textID = 59;
                         StartCoroutine(MathText());
                     }
 
                     else if(_statusManager.Math >= 11 && _statusManager.Math <= 19)
                     {
+                        _statusManager.PlusCrazy(2);
                         _textID = 62;
                         StartCoroutine(MathText());
                     }
 
                     else if(_statusManager.Math >= 0 && _statusManager.Math <= 10)
                     {
+                        _statusManager.PlusCrazy(5);
                         _textID = 65;
                         StartCoroutine(MathText());
                     }
@@ -311,17 +316,22 @@ public class ScenarioManager : MonoBehaviour
                 case "分岐3":
                     if (_statusManager.National >= 20)
                     {
+                        _statusManager.PlusGirlsFriend(3);
+                        _statusManager.PlusBoyFriend(3);
+                        _statusManager.PlusArcadeFriend(3);
                         _textID = 59;
                         StartCoroutine(NationalText());
                     }
 
                     if (_statusManager.National >= 11 && _statusManager.National <= 19)
                     {
+                        _statusManager.PlusCrazy(2);
                         _textID = 62;
                         StartCoroutine(NationalText());
                     }
                     if (_statusManager.National >= 5 && _statusManager.National <= 10)
                     {
+                        _statusManager.PlusCrazy(5);
                         _textID = 65;
                         StartCoroutine(NationalText());
                     }
@@ -380,25 +390,25 @@ public class ScenarioManager : MonoBehaviour
 
     public void ButtonA()
     {
-        _statusManager.PlusGirlsFriend(2);
+        _statusManager.PlusGirlsFriend(4);
         ButtonClick();
     }
 
     public void ButtonB()
     {
-        _statusManager.PlusBoyFriend(2);
+        _statusManager.PlusBoyFriend(4);
         ButtonClick();
     }
 
     public void ButtonC()
     {
-        _statusManager.PlusArcadeFriend(2);
+        _statusManager.PlusArcadeFriend(4);
         ButtonClick();
     }
 
     public void ButtonD()
     {
-        _statusManager.PlusCrazy(2);
+        _statusManager.PlusCrazy(4);
         ButtonClick();
     }
 
