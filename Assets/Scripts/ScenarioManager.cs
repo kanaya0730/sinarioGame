@@ -10,6 +10,7 @@ public class ScenarioManager : MonoBehaviour
 {
     StatusManager _statusManager;
 
+    FadeController _fadeController;
     public List<string[]> CsvData => _csvData;
 
     public int TextID => _textID;
@@ -21,6 +22,9 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField]
     [Header("選択ボタン")]
     Button[] _button;
+
+    [SerializeField]
+    bool _auto;
 
     [SerializeField]
     [Header("背景")]
@@ -43,14 +47,22 @@ public class ScenarioManager : MonoBehaviour
 
     int _textID = 1;
 
-    int[] _lineID = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int[] _lineID = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
     bool _eventTime = false;//条件分岐の確認
+    public void Start()
+    {
+        _fadeController = FindObjectOfType<FadeController>();
+
+        _statusManager = FindObjectOfType<StatusManager>();
+
+        _fadeController.StartFadeIn();
+
+        _auto = false;
+    }
 
     public void LoadCSV()
     {
-        _statusManager = FindObjectOfType<StatusManager>();
-
         StringReader reader = new StringReader(_textFail.text);
 
         while (reader.Peek() != -1)
@@ -74,8 +86,13 @@ public class ScenarioManager : MonoBehaviour
         Debug.Log("現在：" + _textID + "行");
 
         _uitext.DrawText(_csvData[_textID][_lineID[1]], _csvData[_textID][_lineID[2]]); //(名前,セリフ)
-        yield return StartCoroutine(Skip());
 
+        if(!_auto)
+        {
+            yield return StartCoroutine(Skip());
+        }
+
+        yield return new WaitForSeconds(5);//五秒待機
         _textID++; //次の行へ
 
         EventCheck();
@@ -83,9 +100,9 @@ public class ScenarioManager : MonoBehaviour
 
     void Update()
     {
-        if (_eventTime == true)
+        if (_eventTime)
         {
-            switch (_csvData[_textID][_lineID[7]])
+            switch (_csvData[_textID][_lineID[7]])　//キャラクター立ち絵
             {
                 case "100":
                     for (int i = 0; i < _character.Length; i++)
@@ -130,7 +147,7 @@ public class ScenarioManager : MonoBehaviour
 
         else
         {
-            switch (_csvData[_textID][_lineID[0]])
+            switch (_csvData[_textID][_lineID[0]])　//キャラクター立ち絵
             {
                 case "100":
                     for (int i = 0; i < _character.Length; i++)
@@ -173,7 +190,7 @@ public class ScenarioManager : MonoBehaviour
             }
         }
         
-        switch (_csvData[_textID][_lineID[3]])
+        switch (_csvData[_textID][_lineID[3]])//背景
         {
             case "学校（裏）":
                 BackImagefalse();
@@ -245,7 +262,7 @@ public class ScenarioManager : MonoBehaviour
                 break;
         }
 
-        switch(_csvData[_textID][_lineID[4]])
+        switch(_csvData[_textID][_lineID[4]])　//イベント
         {
             case "TRUE":
                 _eventTime = true;
@@ -254,14 +271,14 @@ public class ScenarioManager : MonoBehaviour
         }
         if(_eventTime == false)
         {
-            switch (_csvData[_textID][_lineID[6]])
+            switch (_csvData[_textID][_lineID[6]])　//シーン遷移
             {
                 case "MathScene":
-                    SceneManager.LoadScene("MathScene");
+                    StartCoroutine(ChangeScene());
                     break;
 
                 case "NationalScene":
-                    SceneManager.LoadScene("NationalScene");
+                    StartCoroutine(ChangeScene());
                     break;
             }
 
@@ -295,6 +312,7 @@ public class ScenarioManager : MonoBehaviour
                         _statusManager.PlusBoyFriend(3);
                         _statusManager.PlusArcadeFriend(3);
                         _textID = 59;
+
                         StartCoroutine(MathText());
                     }
 
@@ -302,6 +320,7 @@ public class ScenarioManager : MonoBehaviour
                     {
                         _statusManager.PlusCrazy(2);
                         _textID = 62;
+
                         StartCoroutine(MathText());
                     }
 
@@ -309,6 +328,7 @@ public class ScenarioManager : MonoBehaviour
                     {
                         _statusManager.PlusCrazy(5);
                         _textID = 65;
+
                         StartCoroutine(MathText());
                     }
                     break;
@@ -320,6 +340,7 @@ public class ScenarioManager : MonoBehaviour
                         _statusManager.PlusBoyFriend(3);
                         _statusManager.PlusArcadeFriend(3);
                         _textID = 59;
+
                         StartCoroutine(NationalText());
                     }
 
@@ -327,17 +348,26 @@ public class ScenarioManager : MonoBehaviour
                     {
                         _statusManager.PlusCrazy(2);
                         _textID = 62;
+
                         StartCoroutine(NationalText());
                     }
                     if (_statusManager.National >= 5 && _statusManager.National <= 10)
                     {
                         _statusManager.PlusCrazy(5);
                         _textID = 65;
+
                         StartCoroutine(NationalText());
                     }
                     break;
             }
         }
+    }
+
+    IEnumerator ChangeScene()
+    {
+        _fadeController.StartFadeOut();
+        yield return new WaitForSeconds(3);//五秒待機
+        SceneManager.LoadScene(_csvData[_textID][_lineID[6]]);
     }
 
     /// <summary>ボタンUIを非表示</summary>
@@ -412,10 +442,33 @@ public class ScenarioManager : MonoBehaviour
         ButtonClick();
     }
 
+    /// <summary>オートボタン</summary>
+    public void AutoButton()
+    {
+        if(_auto)
+        {
+            _auto = false;
+        }
+
+        _auto = true;
+    }
+
+    /// <summary>スキップボタン</summary>
+    public void SkipButton()
+    {
+
+    }
+
     IEnumerator MathText()
     {
         _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
-        yield return StartCoroutine(Skip());
+
+        if (!_auto)
+        {
+            yield return StartCoroutine(Skip());
+        }
+
+        yield return new WaitForSeconds(5);//五秒待機
         _textID++; //次の行へ
 
         if(_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
@@ -434,7 +487,14 @@ public class ScenarioManager : MonoBehaviour
     IEnumerator NationalText()
     {
         _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
-        yield return StartCoroutine(Skip());
+
+        if (!_auto)
+        {
+            yield return StartCoroutine(Skip());
+        }
+
+        yield return new WaitForSeconds(5);//五秒待機
+
         _textID++; //次の行へ
 
         if (_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
@@ -449,5 +509,4 @@ public class ScenarioManager : MonoBehaviour
             StartCoroutine(NationalText());
         }
     }
-
 }

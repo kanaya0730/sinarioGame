@@ -11,12 +11,12 @@ public class UIText : MonoBehaviour
     /// <summary>喋っている人の名前</summary>
     [SerializeField]
     [Header("喋っている人の名前")]
-    Text nameText;
+    Text _nameText;
 
     /// <summary>喋っている内容やナレーション</summary>
     [SerializeField]
     [Header("喋っている内容やナレーション")]
-    Text talkText;
+    Text _talkText;
 
     /// <summary>テキストエフェクト</summary>
     [SerializeField]
@@ -41,10 +41,12 @@ public class UIText : MonoBehaviour
         switch(_playing)
         {
             case true:
+
                 triangle.SetActive(false);
                 break;
 
             case false:
+
                 triangle.SetActive(true);
                 break;
         }
@@ -59,7 +61,7 @@ public class UIText : MonoBehaviour
 
     public void DrawText(string name, string text)
     {
-        nameText.text = name;
+        _nameText.text = name;
         StartCoroutine(CoDrawText(text));
     }
 
@@ -78,9 +80,9 @@ public class UIText : MonoBehaviour
 
             int len = Mathf.FloorToInt(time / textSpeed);
             if (len > text.Length) break;
-            talkText.text = text.Substring(0, len);
+            _talkText.text = text.Substring(0, len);
         }
-        talkText.text = text;
+        _talkText.text = text;
         yield return null;
         _playing = false;
     }
