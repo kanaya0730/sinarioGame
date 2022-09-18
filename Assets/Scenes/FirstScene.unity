@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameText: {fileID: 684863924}
   _talkText: {fileID: 297207608}
-  triangle: {fileID: 883382654}
+  _triangle: {fileID: 883382654}
   _playing: 0
   textSpeed: 0.08
 --- !u!114 &725433588
@@ -1983,7 +1983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1197424762
 RectTransform:
   m_ObjectHideFlags: 0

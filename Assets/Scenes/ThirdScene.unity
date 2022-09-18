@@ -466,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameText: {fileID: 1658011195}
   _talkText: {fileID: 2068230308}
-  triangle: {fileID: 1313037229}
+  _triangle: {fileID: 1313037229}
   _playing: 0
   textSpeed: 0.05
 --- !u!114 &218598508
@@ -489,6 +489,7 @@ MonoBehaviour:
   - {fileID: 1457544164}
   - {fileID: 1829056731}
   - {fileID: 1124498768}
+  _auto: 0
   _backImage:
   - {fileID: 95829478}
   - {fileID: 1442021859}

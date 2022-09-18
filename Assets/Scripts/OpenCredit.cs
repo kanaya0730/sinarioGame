@@ -8,6 +8,9 @@ public class OpenCredit : MonoBehaviour
     GameObject _panel;
 
     [SerializeField]
+    GameObject _sound;
+
+    [SerializeField]
     Animator _animation;
 
     bool _nowPanel;
@@ -15,6 +18,7 @@ public class OpenCredit : MonoBehaviour
     {
         if (_nowPanel == true)
         {
+            _sound.SetActive(true);
             PlayAnim();
         }
     }
@@ -31,5 +35,6 @@ public class OpenCredit : MonoBehaviour
     {
         _nowPanel = false;
         _panel.SetActive(false);
+        _sound.SetActive(false);
     }
 }

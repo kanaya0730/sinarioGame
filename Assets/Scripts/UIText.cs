@@ -21,7 +21,7 @@ public class UIText : MonoBehaviour
     /// <summary>テキストエフェクト</summary>
     [SerializeField]
     [Header("テキストエフェクト")]
-    GameObject triangle;
+    GameObject _triangle;
 
     /// <summary>テキスト判定</summary>
     [SerializeField]
@@ -41,13 +41,11 @@ public class UIText : MonoBehaviour
         switch(_playing)
         {
             case true:
-
-                triangle.SetActive(false);
+                _triangle.SetActive(false);
                 break;
 
             case false:
-
-                triangle.SetActive(true);
+                _triangle.SetActive(true);
                 break;
         }
     }
@@ -55,7 +53,7 @@ public class UIText : MonoBehaviour
     /// <summary>クリックで次のページを表示させる</summary>
     public bool IsClicked()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) return true;
+        if (Input.GetMouseButtonDown(0)) return true;
         return false;
     }
 

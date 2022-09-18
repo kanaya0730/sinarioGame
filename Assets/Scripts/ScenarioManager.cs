@@ -87,12 +87,9 @@ public class ScenarioManager : MonoBehaviour
 
         _uitext.DrawText(_csvData[_textID][_lineID[1]], _csvData[_textID][_lineID[2]]); //(名前,セリフ)
 
-        if(!_auto)
-        {
-            yield return StartCoroutine(Skip());
-        }
+        if(!_auto) { yield return StartCoroutine(Skip()); }
+        else if(_auto){ yield return new WaitForSeconds(6); }//五秒待機
 
-        yield return new WaitForSeconds(5);//五秒待機
         _textID++; //次の行へ
 
         EventCheck();
@@ -445,12 +442,8 @@ public class ScenarioManager : MonoBehaviour
     /// <summary>オートボタン</summary>
     public void AutoButton()
     {
-        if(_auto)
-        {
-            _auto = false;
-        }
-
-        _auto = true;
+        if (_auto) { _auto = false; }
+        else { _auto = true; }
     }
 
     /// <summary>スキップボタン</summary>
@@ -467,8 +460,10 @@ public class ScenarioManager : MonoBehaviour
         {
             yield return StartCoroutine(Skip());
         }
-
-        yield return new WaitForSeconds(5);//五秒待機
+        else
+        {
+            yield return new WaitForSeconds(5);//五秒待機
+        }
         _textID++; //次の行へ
 
         if(_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
@@ -492,8 +487,10 @@ public class ScenarioManager : MonoBehaviour
         {
             yield return StartCoroutine(Skip());
         }
-
-        yield return new WaitForSeconds(5);//五秒待機
+        else
+        {
+            yield return new WaitForSeconds(5);//五秒待機
+        }
 
         _textID++; //次の行へ
 

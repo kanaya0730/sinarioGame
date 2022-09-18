@@ -183,8 +183,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0df263e4905fdba44a57710a3bdfdd6d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -380,6 +380,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304947597}
   m_CullTransparentMesh: 0
+--- !u!1 &333550266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333550268}
+  - component: {fileID: 333550267}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!82 &333550267
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333550266}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4593c728247236b44ac602e5f746f7b9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &333550268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333550266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &439613211
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 145345645}
+  _sound: {fileID: 333550266}
   _animation: {fileID: 2057365710}
 --- !u!1 &465186098
 GameObject:
@@ -889,7 +1017,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uFF5E\u30DF\u30CB\u30B2\u30FC\u30E0\u4ED8\u304D\uFF5E"
+  m_Text: '
+
+'
 --- !u!222 &820890548
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -949,7 +1079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -504, y: 378}
+  m_AnchoredPosition: {x: -411, y: 338}
   m_SizeDelta: {x: -1760, y: -1050}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869290493
@@ -972,7 +1102,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ba15cab60c1087847b4ba74940fe393f, type: 3}
+    m_Font: {fileID: 12800000, guid: e1c136ed33296624d8c9dbdf783c208d, type: 3}
     m_FontSize: 80
     m_FontStyle: 1
     m_BestFit: 0
@@ -984,7 +1114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30CE\u30D9\u30EB\u30B2\u30FC\u30E0"
+  m_Text: "\u30A2\u30C9\u30D9\u30F3\u30C1\u30E3\u30FC\u30B2\u30FC\u30E0"
 --- !u!222 &869290494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1098,7 +1228,7 @@ GameObject:
   - component: {fileID: 917667772}
   - component: {fileID: 917667771}
   m_Layer: 5
-  m_Name: Character0
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1142,7 +1272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 337f1a72d8a9ca543b9fe8b79683f58b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4baa554556a8234ba4978c85192d48f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2100,7 +2230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710, y: -472}
+  m_AnchoredPosition: {x: 670, y: -366}
   m_SizeDelta: {x: 380, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913574195
@@ -2323,14 +2453,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ba15cab60c1087847b4ba74940fe393f, type: 3}
+    m_Font: {fileID: 12800000, guid: e1c136ed33296624d8c9dbdf783c208d, type: 3}
     m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
@@ -2345,7 +2475,7 @@ MonoBehaviour:
   m_Text: "\u3010\u7ACB\u3061\u7D75\u7D20\u6750\u3011\u660E\u308B\u3044\u8336\u9AEA\u306E\u9752\u5E74\u3000\r\n\u3059\u3044\u307F\u3093\u3059\u3044\u3063\u3061\r\n\u3010\u7ACB\u3061\u7D75\u7D20\u6750\u3011\u9ED2\u9AEA\u8D64\u76EE\u306E\u5C11\u5E74\u3000\r\n\u3059\u3044\u307F\u3093\u3059\u3044\u3063\u3061\r\n\u3010\u80CC\u666F\u7D20\u6750\u3011\u5973\u306E\u5B50\u306E\u90E8\u5C4B\u3000\r\n\u682A\u5F0F\u4F1A\u793ECreativeFreaks\r\n\u3010\u80CC\u666F\u7D20\u6750\u3011\u8857\u3000\u901A\u5B66\u8DEF\uFF08\u5915\u65B9\uFF09\u3000\r\n\u304D\u307E\u3050\u308C\u30A2\u30D5\u30BF\u30FC\r\n\u3010\u80CC\u666F\u7D20\u6750\u3011\u8857\u3000\u901A\u5B66\u8DEF\uFF08\u591C\u7167\u660E\uFF09\u3000\r\n\u304D\u307E\u3050\u308C\u30A2\u30D5\u30BF\u30FC\r\n\u3010\u7ACB\u3061\u7D75\u7D20\u6750\u3011\u30DC\u30D6\u306E\u5973\u306E\u5B50\r\n\u540D\u524D\u3010\u3057\u307E\u3011\r\nbooth\u3010https://melomolo.booth.pm/\u3011\r\ntwitter\u3010https://twitter.com/kanidess\u3011\r\n\u3010\u7ACB\u3061\u7D75\u7D20\u6750\u3011\u9ED2\u9AEA\u306E\u5973\u306E\u5B50\u3000\r\n\u540D\u524D\u3010\u3057\u307E\u3011\r\nbooth\u3010https://melomolo.booth.pm/\u3011\r\ntwitter\u3010https://twitter.com/kanidess\u3011\r\n\u30D5\u30EA\u30FC\u7D20\u6750
     \u5929\u4F7F\u3061\u3083\u3093\uFF3F\u7ACB\u3061\u7D75\r\n\u304A\u306B\u304F\u3000\u30F2\u30A6\u30AE
     \u30EC\u30AA\r\n\u3010\u7ACB\u3061\u7D75\u7D20\u675001\u3011\u30E1\u30A4\u30C9\u3001\u57F7\u4E8B\r\n\u4F5C\u8005\uFF1A\u6850\u5CF6\u3086\u304D\u308B\r\nTwitter\uFF1A@xxLoveSoldierxx\r\n\u3010\u7ACB\u3061\u7D75\u7D20\u6750\uFF103\u3011\u5973\u5B50\u5B66\u751F\u3000\u30BB\u30FC\u30E9\u30FC\u670D\u3000\u5236\u670D
-    \u3000\u30AE\u30E3\u30EB\r\n\u540D\u524D\u3010\u30AA\u30B9\u30E4\u30DF\u30B5\u30CA\u30A4\u3011\r\nbooth\u3010https://osuyamisanai.booth.pm/\u3011\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+    \u3000\u30AE\u30E3\u30EB\r\n\u540D\u524D\u3010\u30AA\u30B9\u30E4\u30DF\u30B5\u30CA\u30A4\u3011\r\nbooth\u3010https://osuyamisanai.booth.pm/\u3011\r\n\n\n\n\n\n\n\n\n\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
 --- !u!222 &2057365709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2436,7 +2566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
