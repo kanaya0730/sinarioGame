@@ -266,7 +266,8 @@ public class ScenarioManager : MonoBehaviour
                 EventCheck();
                 break;
         }
-        if(_eventTime == false)
+
+        if(!_eventTime)
         {
             switch (_csvData[_textID][_lineID[6]])　//シーン遷移
             {
@@ -285,7 +286,7 @@ public class ScenarioManager : MonoBehaviour
     /// <summary>イベントフラグが立っているか確認</summary>
     public void EventCheck()
     {
-        if(_eventTime == false) //イベントフラグが立っていない
+        if(!_eventTime) //イベントフラグが立っていない
         {
             StartCoroutine(Cotext()); //繰り返す
         }
@@ -376,6 +377,7 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
+    /// <summary>背景を非表示</summary>
     public void BackImagefalse()
     {
         for (int i = 0; i < _backImage.Length; i++)
@@ -417,25 +419,25 @@ public class ScenarioManager : MonoBehaviour
 
     public void ButtonA()
     {
-        _statusManager.PlusGirlsFriend(4);
+        _statusManager.PlusGirlsFriend(2);
         ButtonClick();
     }
 
     public void ButtonB()
     {
-        _statusManager.PlusBoyFriend(4);
+        _statusManager.PlusBoyFriend(2);
         ButtonClick();
     }
 
     public void ButtonC()
     {
-        _statusManager.PlusArcadeFriend(4);
+        _statusManager.PlusArcadeFriend(2);
         ButtonClick();
     }
 
     public void ButtonD()
     {
-        _statusManager.PlusCrazy(4);
+        _statusManager.PlusCrazy(2);
         ButtonClick();
     }
 
@@ -456,14 +458,10 @@ public class ScenarioManager : MonoBehaviour
     {
         _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
 
-        if (!_auto)
-        {
-            yield return StartCoroutine(Skip());
-        }
-        else
-        {
-            yield return new WaitForSeconds(5);//五秒待機
-        }
+
+        if (!_auto) { yield return StartCoroutine(Skip()); }
+        else { yield return new WaitForSeconds(5); }
+
         _textID++; //次の行へ
 
         if(_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
@@ -483,14 +481,8 @@ public class ScenarioManager : MonoBehaviour
     {
         _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
 
-        if (!_auto)
-        {
-            yield return StartCoroutine(Skip());
-        }
-        else
-        {
-            yield return new WaitForSeconds(5);//五秒待機
-        }
+        if (!_auto) { yield return StartCoroutine(Skip()); }
+        else { yield return new WaitForSeconds(5); }
 
         _textID++; //次の行へ
 
@@ -501,9 +493,6 @@ public class ScenarioManager : MonoBehaviour
             StartCoroutine(Cotext());
         }
 
-        else
-        {
-            StartCoroutine(NationalText());
-        }
+        else { StartCoroutine(NationalText()); }
     }
 }

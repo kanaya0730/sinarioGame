@@ -41,11 +41,11 @@ public class UIText : MonoBehaviour
         switch(_playing)
         {
             case true:
-                _triangle.SetActive(false);
+                _triangle?.SetActive(false);
                 break;
 
             case false:
-                _triangle.SetActive(true);
+                _triangle?.SetActive(true);
                 break;
         }
     }

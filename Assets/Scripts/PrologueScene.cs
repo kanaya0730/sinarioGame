@@ -54,7 +54,7 @@ public class PrologueScene : MonoBehaviour
 
     IEnumerator Cotext()
     {
-        Debug.Log("現在：" + _textID + "行");
+        Debug.Log("現在：" + _textID + "行");//現在出力している行数の表示
 
         _uitext.DrawText(_csvData[_textID][_lineID[0]], _csvData[_textID][_lineID[1]]); //(名前,セリフ)
         yield return new WaitForSeconds(5);//五秒待機
@@ -66,7 +66,7 @@ public class PrologueScene : MonoBehaviour
     IEnumerator ChangeScene()
     {
         _fadeController.StartFadeOut();
-        yield return new WaitForSeconds(3f);//三秒待機
+        yield return new WaitForSeconds(3);//三秒待機
         SceneManager.LoadScene("FirstScene");
     }
 }
