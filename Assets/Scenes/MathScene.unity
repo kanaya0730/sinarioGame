@@ -398,7 +398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u96E3\u6613\u5EA6\uFF1AHard\u3000\u4E09\u6841\uFF0B\u4E09\u6841\u3000100+100"
+  m_Text: "\u96E3\u6613\u5EA6\uFF1AHard"
 --- !u!222 &252928848
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1122469554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u96E3\u6613\u5EA6\uFF1ANormal\u3000\u4E8C\u6841 \uFF0B\u4E8C\u6841\u300010+10"
+  m_Text: "\u96E3\u6613\u5EA6\uFF1ANormal"
 --- !u!222 &1567244243
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2101,7 +2101,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u96E3\u6613\u5EA6\uFF1AEasy\u3000\u4E00\u6841 \uFF0B\u4E00\u6841\u3000\uFF11+\uFF11"
+  m_Text: "\u96E3\u6613\u5EA6\uFF1AEasy"
 --- !u!222 &2104264923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u96E3\u6613\u5EA6\uFF1AMaster\u3000\u56DB\u6841\uFF0B\u56DB\u6841\u30001000+1000"
+  m_Text: "\u96E3\u6613\u5EA6\uFF1AMaster"
 --- !u!222 &2125729659
 CanvasRenderer:
   m_ObjectHideFlags: 0

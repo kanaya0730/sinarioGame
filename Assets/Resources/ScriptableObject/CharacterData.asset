@@ -12,5 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1836a9073537d3846a46665061e90043, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  _proFile: 
-  _characterDatas: []
+  _characterDatas:
+  - _name: "\u60A0\u5E0C"
+    _gender: "\u7537"
+    _old: 16
+    _like: "\u7518\u3044\u3082\u306E"
+    _hate: "\u82E6\u3044\u3082\u306E"
+    _joy: 
+    _anger: 
+    _sad: 
+    _fun: 
+  - _name: "\u51AC\u99AC"
+    _gender: 
+    _old: 0
+    _like: 
+    _hate: 
+    _joy: 
+    _anger: 
+    _sad: 
+    _fun: 
+  - _name: "\u51DC"
+    _gender: 
+    _old: 0
+    _like: 
+    _hate: 
+    _joy: 
+    _anger: 
+    _sad: 
+    _fun: 
+  - _name: "\u795E"
+    _gender: 
+    _old: 0
+    _like: 
+    _hate: 
+    _joy: 
+    _anger: 
+    _sad: 
+    _fun: 
+  - _name: "\u6676"
+    _gender: 
+    _old: 0
+    _like: 
+    _hate: 
+    _joy: 
+    _anger: 
+    _sad: 
+    _fun: 

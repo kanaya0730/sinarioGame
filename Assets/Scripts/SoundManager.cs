@@ -21,4 +21,10 @@ public class SoundManager : MonoBehaviour
     /// <summary>クリック音</summary>
     public void ClickSE(AudioClip clip) => _audioSource.PlayOneShot(clip);
 
+    public void PlayBGM() => _audioSource.Play();
+
+    public void StopBGM() => _audioSource.Stop();
+
+    public void StopSE() => _audioSource.Pause(); 
+
 }

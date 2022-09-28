@@ -81,7 +81,6 @@ public class MathGame : MonoBehaviour
             {
                 _timeLimit = 0;
                 answer = "お疲れ様です。";
-                inputField.text = "00000000";
 
                 SceneManager.LoadScene("SecondScene");
             }

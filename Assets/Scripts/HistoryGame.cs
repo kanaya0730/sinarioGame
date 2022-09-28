@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -68,28 +66,19 @@ public class HistoryGame : MonoBehaviour
         dt = System.DateTime.Now;
         History();
 
-        Debug.Log(_questionData.Subject);
-
         _question = _questionData.QuestionDatas[_iD].Question;
         _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
 
-        Debug.Log(_question);
         Debug.Log(_questionAnswer);
-
-
         _statusManager = FindObjectOfType<StatusManager>();
     }
 
     void Update()
     {
         _dayText.text = "日付" + dt.Year.ToString() + "年" + dt.Month.ToString() + "月" + dt.Day.ToString() + "日";
-
         _answerText.text = answer;
-
         _resultText.text = _clearNum.ToString();
-
         _questionText.text = _question;
-
         _timer.text = _timeLimit.ToString("f1");
 
         if (_play == true)
@@ -111,9 +100,9 @@ public class HistoryGame : MonoBehaviour
         if (_questionAnswer == _answerText.text)
         {
             _answerText.text = "";
+            History();
             _clearNum++;
             _statusManager.PlusNationa(2);
-            History();
         }
     }
 
@@ -129,9 +118,10 @@ public class HistoryGame : MonoBehaviour
     {
         _iD = Random.Range(1,13);
 
-        Debug.Log(_iD);
         _question = _questionData.QuestionDatas[_iD].Question;
         _questionAnswer = _questionData.QuestionDatas[_iD].Answer;
+
+        Debug.Log(_questionAnswer);
     }
 
     /// <summary>ゲームスタート</summary>

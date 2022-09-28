@@ -110,9 +110,9 @@ public class NationalGame : MonoBehaviour
         if (_questionAnswer == _answerText.text) //正解したら次の問題へ
         {
             _answerText.text = "";
-            _clearNum++;
-            _statusManager.PlusNationa(2);
             National();
+            _clearNum++;
+            _statusManager.PlusNationa(1);
         }
     }
 

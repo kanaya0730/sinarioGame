@@ -11,6 +11,8 @@ public class ScenarioManager : MonoBehaviour
     StatusManager _statusManager;
 
     FadeController _fadeController;
+
+    SoundManager _soundManager;
     public List<string[]> CsvData => _csvData;
 
     public int TextID => _textID;
@@ -43,18 +45,41 @@ public class ScenarioManager : MonoBehaviour
     [Header("登場キャラクター")]
     Image[] _character;
 
+    /// <summary>[0] = 笑顔, [1] = 泣き, [2] = 怒り, [3] = 驚き, [4] = 照れ</summary>
+    [SerializeField]
+    [Header("悠希(女)の差分")]
+    Image[] _heroDiference;
+
     List<string[]> _csvData = new List<string[]>();//CSVデータの保存場所
 
     int _textID = 1;
 
     int[] _lineID = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
+    [SerializeField]
+    [Header("クリック音")]
+    AudioClip _clickSE;
+
+    //テスト用
+
+    public bool Sound = false;
+    [SerializeField]
+    [Header("SE")]
+    AudioClip _sound1;
+    [SerializeField]
+    [Header("BGM")]
+    AudioSource _sound2;
+
+    [SerializeField]
+    Sprite test;
     bool _eventTime = false;//条件分岐の確認
     public void Start()
     {
         _fadeController = FindObjectOfType<FadeController>();
 
         _statusManager = FindObjectOfType<StatusManager>();
+        
+        _soundManager = FindObjectOfType<SoundManager>();
 
         _fadeController.StartFadeIn();
 
@@ -79,6 +104,8 @@ public class ScenarioManager : MonoBehaviour
     {
         while (_uitext.Playing) yield return null;
         while (!_uitext.IsClicked()) yield return null;
+
+        _soundManager.ClickSE(_clickSE);
     }
 
     IEnumerator Cotext()
@@ -158,7 +185,33 @@ public class ScenarioManager : MonoBehaviour
                     break;
 
                 case "1"://結城（女）
-                    _character[1].gameObject.SetActive(true);
+                    switch (_csvData[_textID][_lineID[11]])
+                    {
+                        case "笑顔":
+                            CharacterImagefalse();
+                            _heroDiference[0].gameObject.SetActive(true);
+                            break;
+                        case "泣き":
+                            CharacterImagefalse();
+                            _heroDiference[1].gameObject.SetActive(true);
+                            break;
+                        case "怒り":
+                            CharacterImagefalse();
+                            _heroDiference[2].gameObject.SetActive(true);
+                            break;
+                        case "驚き":
+                            CharacterImagefalse();
+                            _heroDiference[3].gameObject.SetActive(true);
+                            break;
+                        case "照れ":
+                            CharacterImagefalse();
+                            _heroDiference[4].gameObject.SetActive(true);
+                            break;
+                        default:
+                            CharacterImagefalse();
+                            _character[1].gameObject.SetActive(true);
+                            break;
+                    }
                     break;
 
                 case "2"://冬馬
@@ -186,85 +239,90 @@ public class ScenarioManager : MonoBehaviour
                     break;
             }
         }
-        
-        switch (_csvData[_textID][_lineID[3]])//背景
+        if(!_eventTime)
         {
-            case "学校（裏）":
-                BackImagefalse();
-                _backImage[0].gameObject.SetActive(true);
-                break;
+            switch (_csvData[_textID][_lineID[3]])//背景
+            {
+                case "学校（裏）":
+                    BackImagefalse();
+                    _backImage[0].gameObject.SetActive(true);
+                    break;
 
-            case "学校（門）":
-                BackImagefalse();
-                _backImage[1].gameObject.SetActive(true);
-                break;
+                case "学校（門）":
+                    BackImagefalse();
+                    _backImage[1].gameObject.SetActive(true);
+                    break;
 
-            case "学校（昇降口）":
-                BackImagefalse();
-                _backImage[2].gameObject.SetActive(true);
-                break;
+                case "学校（昇降口）":
+                    BackImagefalse();
+                    _backImage[2].gameObject.SetActive(true);
+                    break;
 
-            case "学校（教室）":
-                BackImagefalse();
-                _backImage[3].gameObject.SetActive(true);
-                break;
+                case "学校（教室）":
+                    BackImagefalse();
+                    _backImage[3].gameObject.SetActive(true);
+                    break;
 
-            case "学校（廊下）":
-                BackImagefalse();
-                _backImage[4].gameObject.SetActive(true);
-                break;
+                case "学校（廊下）":
+                    BackImagefalse();
+                    _backImage[4].gameObject.SetActive(true);
+                    break;
 
-            case "学校（踊り場）":
-                BackImagefalse();
-                _backImage[5].gameObject.SetActive(true);
-                break;
+                case "学校（踊り場）":
+                    BackImagefalse();
+                    _backImage[5].gameObject.SetActive(true);
+                    break;
 
-            case "通学路（朝）":
-                BackImagefalse();
-                _backImage[6].gameObject.SetActive(true);
-                break;
+                case "通学路（朝）":
+                    BackImagefalse();
+                    _backImage[6].gameObject.SetActive(true);
+                    break;
 
-            case "通学路（夕）":
-                BackImagefalse();
-                _backImage[7].gameObject.SetActive(true);
-                break;
+                case "通学路（夕）":
+                    BackImagefalse();
+                    _backImage[7].gameObject.SetActive(true);
+                    break;
 
-            case "通学路（夜）":
-                BackImagefalse();
-                _backImage[8].gameObject.SetActive(true);
-                break;
+                case "通学路（夜）":
+                    BackImagefalse();
+                    _backImage[8].gameObject.SetActive(true);
+                    break;
 
-            case "女の子の部屋（朝）":
-                BackImagefalse();
-                _backImage[9].gameObject.SetActive(true);
-                break;
-            case "女の子の部屋（夕）":
-                BackImagefalse();
-                _backImage[10].gameObject.SetActive(true);
-                break;
+                case "女の子の部屋（朝）":
+                    BackImagefalse();
+                    _backImage[9].gameObject.SetActive(true);
+                    break;
+                case "女の子の部屋（夕）":
+                    BackImagefalse();
+                    _backImage[10].gameObject.SetActive(true);
+                    break;
 
-            case "女の子の部屋（夜）":
-                BackImagefalse();
-                _backImage[11].gameObject.SetActive(true);
-                break;
+                case "女の子の部屋（夜）":
+                    BackImagefalse();
+                    _backImage[11].gameObject.SetActive(true);
+                    break;
 
-            case "男の子の部屋":
-                BackImagefalse();
-                _backImage[12].gameObject.SetActive(true);
-                break;
+                case "男の子の部屋":
+                    BackImagefalse();
+                    _backImage[12].gameObject.SetActive(true);
+                    break;
 
-            case "夜空":
-                BackImagefalse();
-                _backImage[13].gameObject.SetActive(true);
-                break;
+                case "夜空":
+                    BackImagefalse();
+                    _backImage[13].gameObject.SetActive(true);
+                    break;
+            }
         }
 
-        switch(_csvData[_textID][_lineID[4]])　//イベント
+        if(!_eventTime)
         {
-            case "TRUE":
-                _eventTime = true;
-                EventCheck();
-                break;
+            switch (_csvData[_textID][_lineID[4]]) //イベントフラグ
+            {
+                case "TRUE":
+                    _eventTime = true;
+                    EventCheck();
+                    break;
+            }
         }
 
         if(!_eventTime)
@@ -272,13 +330,41 @@ public class ScenarioManager : MonoBehaviour
             switch (_csvData[_textID][_lineID[6]])　//シーン遷移
             {
                 case "MathScene":
-                    StartCoroutine(ChangeScene());
+                    SceneManager.LoadScene(_csvData[_textID][_lineID[6]]);
                     break;
 
                 case "NationalScene":
-                    StartCoroutine(ChangeScene());
+                    SceneManager.LoadScene(_csvData[_textID][_lineID[6]]);
                     break;
             }
+
+            //テスト用
+            switch (_csvData[_textID][_lineID[12]]) //SE
+            {
+                case "チャイム再生":
+                    if(Sound == false)
+                    {
+                        _soundManager.ChimeSE(_sound1);
+                        Sound = true;
+                    }
+                    break;
+                case "チャイム停止":
+                        _soundManager.StopSE();
+                        Sound = false;
+                    break;
+                case "BGM再生":
+                    if (Sound == false)
+                    {
+                        _soundManager.PlayBGM();
+                        Sound = true;
+                    }
+                    break;
+                case "BGM停止":
+                        _soundManager.StopBGM();
+                        Sound = false;
+                    break;
+            }
+
 
         }
     }
@@ -306,27 +392,19 @@ public class ScenarioManager : MonoBehaviour
                 case "分岐2":
                     if(_statusManager.Math >= 20)
                     {
-                        _statusManager.PlusGirlsFriend(3);
-                        _statusManager.PlusBoyFriend(3);
-                        _statusManager.PlusArcadeFriend(3);
-                        _textID = 59;
-
+                        _textID = 60;
                         StartCoroutine(MathText());
                     }
 
                     else if(_statusManager.Math >= 11 && _statusManager.Math <= 19)
                     {
-                        _statusManager.PlusCrazy(2);
-                        _textID = 62;
-
+                        _textID = 63;
                         StartCoroutine(MathText());
                     }
 
                     else if(_statusManager.Math >= 0 && _statusManager.Math <= 10)
                     {
-                        _statusManager.PlusCrazy(5);
-                        _textID = 65;
-
+                        _textID = 66;
                         StartCoroutine(MathText());
                     }
                     break;
@@ -334,38 +412,23 @@ public class ScenarioManager : MonoBehaviour
                 case "分岐3":
                     if (_statusManager.National >= 20)
                     {
-                        _statusManager.PlusGirlsFriend(3);
-                        _statusManager.PlusBoyFriend(3);
-                        _statusManager.PlusArcadeFriend(3);
-                        _textID = 59;
-
+                        _textID = 60;
                         StartCoroutine(NationalText());
                     }
 
                     if (_statusManager.National >= 11 && _statusManager.National <= 19)
                     {
-                        _statusManager.PlusCrazy(2);
-                        _textID = 62;
-
+                        _textID = 63;
                         StartCoroutine(NationalText());
                     }
-                    if (_statusManager.National >= 5 && _statusManager.National <= 10)
+                    if (_statusManager.National >= 0 && _statusManager.National <= 10)
                     {
-                        _statusManager.PlusCrazy(5);
-                        _textID = 65;
-
+                        _textID = 66;
                         StartCoroutine(NationalText());
                     }
                     break;
             }
         }
-    }
-
-    IEnumerator ChangeScene()
-    {
-        _fadeController.StartFadeOut();
-        yield return new WaitForSeconds(3);//五秒待機
-        SceneManager.LoadScene(_csvData[_textID][_lineID[6]]);
     }
 
     /// <summary>ボタンUIを非表示</summary>
@@ -386,6 +449,15 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
+    /// <summary>キャラクター差分を非表示</summary>
+    public void CharacterImagefalse()
+    {
+        for (int i = 0; i < _heroDiference.Length; i++)
+        {
+            _heroDiference[i].gameObject.SetActive(false);
+        }
+    }
+
     /// <summary>ボタンクリック</summary>
     public void ButtonClick()
     {
@@ -399,7 +471,6 @@ public class ScenarioManager : MonoBehaviour
     {
         LoadCSV();
         _textID = 59;
-        _eventTime = true;
     }
 
     /// <summary>放課後のストーリーから</summary>
@@ -407,7 +478,6 @@ public class ScenarioManager : MonoBehaviour
     {
         LoadCSV();
         _textID = 66;
-        StartCoroutine(Cotext());
     }
 
     /// <summary>最初のストーリーから</summary>
@@ -417,24 +487,28 @@ public class ScenarioManager : MonoBehaviour
         StartCoroutine(Cotext());
     }
 
+    /// <summary>選択ボタン、凜のステータス上昇</summary>
     public void ButtonA()
     {
         _statusManager.PlusGirlsFriend(2);
         ButtonClick();
     }
 
+    /// <summary>選択ボタン、冬馬のステータス上昇</summary>
     public void ButtonB()
     {
         _statusManager.PlusBoyFriend(2);
         ButtonClick();
     }
 
+    /// <summary>選択ボタン、晶のステータス上昇</summary>
     public void ButtonC()
     {
         _statusManager.PlusArcadeFriend(2);
         ButtonClick();
     }
 
+    /// <summary>選択ボタン、神のステータス上昇</summary>
     public void ButtonD()
     {
         _statusManager.PlusCrazy(2);
@@ -448,23 +522,18 @@ public class ScenarioManager : MonoBehaviour
         else { _auto = true; }
     }
 
-    /// <summary>スキップボタン</summary>
-    public void SkipButton()
-    {
-
-    }
-
     IEnumerator MathText()
     {
-        _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
+        Debug.Log("現在：" + _textID + "行");
 
+        _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
 
         if (!_auto) { yield return StartCoroutine(Skip()); }
         else { yield return new WaitForSeconds(5); }
 
         _textID++; //次の行へ
 
-        if(_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
+        if(_textID == 63 || _textID == 66 || _textID == 69 && _eventTime == true)
         {
             _textID = 60;
             _eventTime = false;
@@ -479,6 +548,8 @@ public class ScenarioManager : MonoBehaviour
 
     IEnumerator NationalText()
     {
+        Debug.Log("現在：" + _textID + "行");
+
         _uitext.DrawText(_csvData[_textID][_lineID[8]], _csvData[_textID][_lineID[9]]); //(名前,セリフ)
 
         if (!_auto) { yield return StartCoroutine(Skip()); }
@@ -486,13 +557,16 @@ public class ScenarioManager : MonoBehaviour
 
         _textID++; //次の行へ
 
-        if (_textID == 61 || _textID == 64 || _textID == 67 && _eventTime == true)
+        if (_textID == 63 || _textID == 66 || _textID == 69 && _eventTime == true)
         {
-            _textID = 66;
+            _textID = 67;
             _eventTime = false;
             StartCoroutine(Cotext());
         }
 
-        else { StartCoroutine(NationalText()); }
+        else
+        {
+            StartCoroutine(NationalText());
+        }
     }
 }

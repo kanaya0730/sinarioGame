@@ -6,8 +6,6 @@ public class UIText : MonoBehaviour
 {
     public bool Playing => _playing;
 
-    SoundManager _soundManager;
-
     /// <summary>喋っている人の名前</summary>
     [SerializeField]
     [Header("喋っている人の名前")]
@@ -32,10 +30,6 @@ public class UIText : MonoBehaviour
     [Header("テキストの表示速度")] 
     float textSpeed = 0.1f;
 
-    void Start()
-    {
-        _soundManager = FindObjectOfType<SoundManager>();
-    }
     void Update()
     {
         switch(_playing)
